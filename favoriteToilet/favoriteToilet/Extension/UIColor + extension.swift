@@ -10,9 +10,6 @@ import UIKit.UIColor
 extension UIColor {
     enum Custom {
         static let backGround = UIColor.systemBackground
-        static let textColor: (CGFloat) -> UIColor = { alpha in
-            let color = UIColor.black.withAlphaComponent(alpha)
-            return color
-        }
+        static let text = UIColor.black
     }
 }
