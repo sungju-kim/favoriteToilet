@@ -7,11 +7,11 @@
 
 import Foundation
 
-// MARK: - LogInView
-extension String {
-    static let slogan = "달라진것은 단 하나,\n화장실 입니다."
-
+struct Constant {
+    private init() {}
+    // MARK: - LogInView
     enum LogInView {
+        static let slogan = "달라진것은 단 하나,\n화장실 입니다."
         static let appleLogIn = "Apple 계정으로 로그인"
         static let findToilet = "화장실 찾기"
     }
