@@ -21,6 +21,10 @@
 		6C51DF19288FBAF80057B436 /* SF-Pro-Display-Semibold.otf in Resources */ = {isa = PBXBuildFile; fileRef = 6C51DF15288FBAF80057B436 /* SF-Pro-Display-Semibold.otf */; };
 		6C51DF1A288FBAF80057B436 /* SF-Pro-Display-Bold.otf in Resources */ = {isa = PBXBuildFile; fileRef = 6C51DF16288FBAF80057B436 /* SF-Pro-Display-Bold.otf */; };
 		6C51DF1D288FBB5F0057B436 /* UIFont + extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6C51DF1C288FBB5F0057B436 /* UIFont + extension.swift */; };
+		6C51DF24288FBF900057B436 /* SloganLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6C51DF23288FBF900057B436 /* SloganLabel.swift */; };
+		6C51DF26288FC1990057B436 /* Constraint.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6C51DF25288FC1990057B436 /* Constraint.swift */; };
+		6C51DF29288FC7280057B436 /* UIButton + extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6C51DF28288FC7280057B436 /* UIButton + extension.swift */; };
+		6C51DF2B288FCC0C0057B436 /* Constant.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6C51DF2A288FCC0C0057B436 /* Constant.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -36,6 +40,10 @@
 		6C51DF15288FBAF80057B436 /* SF-Pro-Display-Semibold.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "SF-Pro-Display-Semibold.otf"; sourceTree = "<group>"; };
 		6C51DF16288FBAF80057B436 /* SF-Pro-Display-Bold.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "SF-Pro-Display-Bold.otf"; sourceTree = "<group>"; };
 		6C51DF1C288FBB5F0057B436 /* UIFont + extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIFont + extension.swift"; sourceTree = "<group>"; };
+		6C51DF23288FBF900057B436 /* SloganLabel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SloganLabel.swift; sourceTree = "<group>"; };
+		6C51DF25288FC1990057B436 /* Constraint.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constraint.swift; sourceTree = "<group>"; };
+		6C51DF28288FC7280057B436 /* UIButton + extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIButton + extension.swift"; sourceTree = "<group>"; };
+		6C51DF2A288FCC0C0057B436 /* Constant.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constant.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -97,6 +105,7 @@
 			isa = PBXGroup;
 			children = (
 				6C51DF1C288FBB5F0057B436 /* UIFont + extension.swift */,
+				6C51DF28288FC7280057B436 /* UIButton + extension.swift */,
 			);
 			path = Extension;
 			sourceTree = "<group>";
@@ -104,6 +113,7 @@
 		6C51DF1E288FBBEB0057B436 /* Source */ = {
 			isa = PBXGroup;
 			children = (
+				6C51DF27288FC33B0057B436 /* Support */,
 				6C51DF21288FBC140057B436 /* View */,
 				6C51DF1F288FBBFB0057B436 /* LifeCycle */,
 			);
@@ -131,8 +141,18 @@
 			isa = PBXGroup;
 			children = (
 				6C51DEF4288FA6470057B436 /* LogInViewController.swift */,
+				6C51DF23288FBF900057B436 /* SloganLabel.swift */,
 			);
 			path = LogIn;
+			sourceTree = "<group>";
+		};
+		6C51DF27288FC33B0057B436 /* Support */ = {
+			isa = PBXGroup;
+			children = (
+				6C51DF25288FC1990057B436 /* Constraint.swift */,
+				6C51DF2A288FCC0C0057B436 /* Constant.swift */,
+			);
+			path = Support;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -244,7 +264,11 @@
 				6C51DF1D288FBB5F0057B436 /* UIFont + extension.swift in Sources */,
 				6C51DEF5288FA6470057B436 /* LogInViewController.swift in Sources */,
 				6C51DEF1288FA6470057B436 /* AppDelegate.swift in Sources */,
+				6C51DF2B288FCC0C0057B436 /* Constant.swift in Sources */,
+				6C51DF29288FC7280057B436 /* UIButton + extension.swift in Sources */,
 				6C51DEF3288FA6470057B436 /* SceneDelegate.swift in Sources */,
+				6C51DF24288FBF900057B436 /* SloganLabel.swift in Sources */,
+				6C51DF26288FC1990057B436 /* Constraint.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
