@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		6C361D15288FDA5500833E93 /* UIColor + extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6C361D14288FDA5500833E93 /* UIColor + extension.swift */; };
 		6C51DEF1288FA6470057B436 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6C51DEF0288FA6470057B436 /* AppDelegate.swift */; };
 		6C51DEF3288FA6470057B436 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6C51DEF2288FA6470057B436 /* SceneDelegate.swift */; };
 		6C51DEF5288FA6470057B436 /* LogInViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6C51DEF4288FA6470057B436 /* LogInViewController.swift */; };
@@ -28,6 +29,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		6C361D14288FDA5500833E93 /* UIColor + extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIColor + extension.swift"; sourceTree = "<group>"; };
 		6C51DEED288FA6470057B436 /* favoriteToilet.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = favoriteToilet.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		6C51DEF0288FA6470057B436 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		6C51DEF2288FA6470057B436 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -106,6 +108,7 @@
 			children = (
 				6C51DF1C288FBB5F0057B436 /* UIFont + extension.swift */,
 				6C51DF28288FC7280057B436 /* UIButton + extension.swift */,
+				6C361D14288FDA5500833E93 /* UIColor + extension.swift */,
 			);
 			path = Extension;
 			sourceTree = "<group>";
@@ -269,6 +272,7 @@
 				6C51DEF3288FA6470057B436 /* SceneDelegate.swift in Sources */,
 				6C51DF24288FBF900057B436 /* SloganLabel.swift in Sources */,
 				6C51DF26288FC1990057B436 /* Constraint.swift in Sources */,
+				6C361D15288FDA5500833E93 /* UIColor + extension.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
