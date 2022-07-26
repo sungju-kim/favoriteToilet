@@ -16,6 +16,11 @@
 		6C51DF0B288FA73C0057B436 /* Alamofire in Frameworks */ = {isa = PBXBuildFile; productRef = 6C51DF0A288FA73C0057B436 /* Alamofire */; };
 		6C51DF0E288FA79C0057B436 /* .swiftlint.yml in Resources */ = {isa = PBXBuildFile; fileRef = 6C51DF0D288FA79C0057B436 /* .swiftlint.yml */; };
 		6C51DF11288FA7E10057B436 /* SnapKit in Frameworks */ = {isa = PBXBuildFile; productRef = 6C51DF10288FA7E10057B436 /* SnapKit */; };
+		6C51DF17288FBAF80057B436 /* SF-Pro-Display-Regular.otf in Resources */ = {isa = PBXBuildFile; fileRef = 6C51DF13288FBAF70057B436 /* SF-Pro-Display-Regular.otf */; };
+		6C51DF18288FBAF80057B436 /* SF-Pro-Text-Regular.otf in Resources */ = {isa = PBXBuildFile; fileRef = 6C51DF14288FBAF70057B436 /* SF-Pro-Text-Regular.otf */; };
+		6C51DF19288FBAF80057B436 /* SF-Pro-Display-Semibold.otf in Resources */ = {isa = PBXBuildFile; fileRef = 6C51DF15288FBAF80057B436 /* SF-Pro-Display-Semibold.otf */; };
+		6C51DF1A288FBAF80057B436 /* SF-Pro-Display-Bold.otf in Resources */ = {isa = PBXBuildFile; fileRef = 6C51DF16288FBAF80057B436 /* SF-Pro-Display-Bold.otf */; };
+		6C51DF1D288FBB5F0057B436 /* UIFont + extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6C51DF1C288FBB5F0057B436 /* UIFont + extension.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -26,6 +31,11 @@
 		6C51DEF9288FA6480057B436 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		6C51DEFE288FA6480057B436 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		6C51DF0D288FA79C0057B436 /* .swiftlint.yml */ = {isa = PBXFileReference; lastKnownFileType = text.yaml; path = .swiftlint.yml; sourceTree = "<group>"; };
+		6C51DF13288FBAF70057B436 /* SF-Pro-Display-Regular.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "SF-Pro-Display-Regular.otf"; sourceTree = "<group>"; };
+		6C51DF14288FBAF70057B436 /* SF-Pro-Text-Regular.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "SF-Pro-Text-Regular.otf"; sourceTree = "<group>"; };
+		6C51DF15288FBAF80057B436 /* SF-Pro-Display-Semibold.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "SF-Pro-Display-Semibold.otf"; sourceTree = "<group>"; };
+		6C51DF16288FBAF80057B436 /* SF-Pro-Display-Bold.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "SF-Pro-Display-Bold.otf"; sourceTree = "<group>"; };
+		6C51DF1C288FBB5F0057B436 /* UIFont + extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIFont + extension.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -63,13 +73,34 @@
 		6C51DEEF288FA6470057B436 /* favoriteToilet */ = {
 			isa = PBXGroup;
 			children = (
+				6C51DF12288FBADC0057B436 /* Resource */,
 				6C51DEF0288FA6470057B436 /* AppDelegate.swift */,
 				6C51DEF2288FA6470057B436 /* SceneDelegate.swift */,
 				6C51DEF4288FA6470057B436 /* MainViewController.swift */,
+				6C51DF1B288FBB4B0057B436 /* Extension */,
 				6C51DEF9288FA6480057B436 /* Assets.xcassets */,
 				6C51DEFE288FA6480057B436 /* Info.plist */,
 			);
 			path = favoriteToilet;
+			sourceTree = "<group>";
+		};
+		6C51DF12288FBADC0057B436 /* Resource */ = {
+			isa = PBXGroup;
+			children = (
+				6C51DF16288FBAF80057B436 /* SF-Pro-Display-Bold.otf */,
+				6C51DF13288FBAF70057B436 /* SF-Pro-Display-Regular.otf */,
+				6C51DF15288FBAF80057B436 /* SF-Pro-Display-Semibold.otf */,
+				6C51DF14288FBAF70057B436 /* SF-Pro-Text-Regular.otf */,
+			);
+			path = Resource;
+			sourceTree = "<group>";
+		};
+		6C51DF1B288FBB4B0057B436 /* Extension */ = {
+			isa = PBXGroup;
+			children = (
+				6C51DF1C288FBB5F0057B436 /* UIFont + extension.swift */,
+			);
+			path = Extension;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -143,6 +174,10 @@
 			buildActionMask = 2147483647;
 			files = (
 				6C51DF0E288FA79C0057B436 /* .swiftlint.yml in Resources */,
+				6C51DF17288FBAF80057B436 /* SF-Pro-Display-Regular.otf in Resources */,
+				6C51DF1A288FBAF80057B436 /* SF-Pro-Display-Bold.otf in Resources */,
+				6C51DF19288FBAF80057B436 /* SF-Pro-Display-Semibold.otf in Resources */,
+				6C51DF18288FBAF80057B436 /* SF-Pro-Text-Regular.otf in Resources */,
 				6C51DEFA288FA6480057B436 /* Assets.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -174,6 +209,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				6C51DF1D288FBB5F0057B436 /* UIFont + extension.swift in Sources */,
 				6C51DEF5288FA6470057B436 /* MainViewController.swift in Sources */,
 				6C51DEF1288FA6470057B436 /* AppDelegate.swift in Sources */,
 				6C51DEF3288FA6470057B436 /* SceneDelegate.swift in Sources */,
