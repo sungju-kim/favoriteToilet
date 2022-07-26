@@ -14,7 +14,7 @@ extension UIButton {
 
         var plain = UIButton.Configuration.plain()
         plain.attributedTitle = attribute
-        plain.baseForegroundColor = .black
+        plain.baseForegroundColor = .Custom.text
 
         let button = UIButton(configuration: plain)
 
@@ -30,7 +30,7 @@ extension UIButton {
         filled.image = image
         filled.imagePadding = 8
         filled.contentInsets = NSDirectionalEdgeInsets(top: 17, leading: 17, bottom: 17, trailing: 17)
-        filled.baseBackgroundColor = .black
+        filled.baseBackgroundColor = .Custom.text
 
         let button = UIButton(configuration: filled)
         button.layer.cornerRadius = 20
