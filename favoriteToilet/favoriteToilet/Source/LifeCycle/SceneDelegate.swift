@@ -16,7 +16,7 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
 
         window = UIWindow(windowScene: windowScene)
         window?.backgroundColor = .systemBackground
-        window?.rootViewController = MainViewController()
+        window?.rootViewController = LogInViewController()
         window?.makeKeyAndVisible()
     }
 }
