@@ -9,17 +9,23 @@
 /* Begin PBXBuildFile section */
 		6C51DEF1288FA6470057B436 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6C51DEF0288FA6470057B436 /* AppDelegate.swift */; };
 		6C51DEF3288FA6470057B436 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6C51DEF2288FA6470057B436 /* SceneDelegate.swift */; };
-		6C51DEF5288FA6470057B436 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6C51DEF4288FA6470057B436 /* ViewController.swift */; };
+		6C51DEF5288FA6470057B436 /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6C51DEF4288FA6470057B436 /* MainViewController.swift */; };
 		6C51DEFA288FA6480057B436 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 6C51DEF9288FA6480057B436 /* Assets.xcassets */; };
+		6C51DF06288FA72E0057B436 /* RxRelay in Frameworks */ = {isa = PBXBuildFile; productRef = 6C51DF05288FA72E0057B436 /* RxRelay */; };
+		6C51DF08288FA72E0057B436 /* RxSwift in Frameworks */ = {isa = PBXBuildFile; productRef = 6C51DF07288FA72E0057B436 /* RxSwift */; };
+		6C51DF0B288FA73C0057B436 /* Alamofire in Frameworks */ = {isa = PBXBuildFile; productRef = 6C51DF0A288FA73C0057B436 /* Alamofire */; };
+		6C51DF0E288FA79C0057B436 /* .swiftlint.yml in Resources */ = {isa = PBXBuildFile; fileRef = 6C51DF0D288FA79C0057B436 /* .swiftlint.yml */; };
+		6C51DF11288FA7E10057B436 /* SnapKit in Frameworks */ = {isa = PBXBuildFile; productRef = 6C51DF10288FA7E10057B436 /* SnapKit */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
 		6C51DEED288FA6470057B436 /* favoriteToilet.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = favoriteToilet.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		6C51DEF0288FA6470057B436 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		6C51DEF2288FA6470057B436 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
-		6C51DEF4288FA6470057B436 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		6C51DEF4288FA6470057B436 /* MainViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainViewController.swift; sourceTree = "<group>"; };
 		6C51DEF9288FA6480057B436 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		6C51DEFE288FA6480057B436 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		6C51DF0D288FA79C0057B436 /* .swiftlint.yml */ = {isa = PBXFileReference; lastKnownFileType = text.yaml; path = .swiftlint.yml; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -27,6 +33,10 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				6C51DF0B288FA73C0057B436 /* Alamofire in Frameworks */,
+				6C51DF11288FA7E10057B436 /* SnapKit in Frameworks */,
+				6C51DF08288FA72E0057B436 /* RxSwift in Frameworks */,
+				6C51DF06288FA72E0057B436 /* RxRelay in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -36,6 +46,7 @@
 		6C51DEE4288FA6470057B436 = {
 			isa = PBXGroup;
 			children = (
+				6C51DF0D288FA79C0057B436 /* .swiftlint.yml */,
 				6C51DEEF288FA6470057B436 /* favoriteToilet */,
 				6C51DEEE288FA6470057B436 /* Products */,
 			);
@@ -54,7 +65,7 @@
 			children = (
 				6C51DEF0288FA6470057B436 /* AppDelegate.swift */,
 				6C51DEF2288FA6470057B436 /* SceneDelegate.swift */,
-				6C51DEF4288FA6470057B436 /* ViewController.swift */,
+				6C51DEF4288FA6470057B436 /* MainViewController.swift */,
 				6C51DEF9288FA6480057B436 /* Assets.xcassets */,
 				6C51DEFE288FA6480057B436 /* Info.plist */,
 			);
@@ -71,12 +82,19 @@
 				6C51DEE9288FA6470057B436 /* Sources */,
 				6C51DEEA288FA6470057B436 /* Frameworks */,
 				6C51DEEB288FA6470057B436 /* Resources */,
+				6C51DF0C288FA7580057B436 /* ShellScript */,
 			);
 			buildRules = (
 			);
 			dependencies = (
 			);
 			name = favoriteToilet;
+			packageProductDependencies = (
+				6C51DF05288FA72E0057B436 /* RxRelay */,
+				6C51DF07288FA72E0057B436 /* RxSwift */,
+				6C51DF0A288FA73C0057B436 /* Alamofire */,
+				6C51DF10288FA7E10057B436 /* SnapKit */,
+			);
 			productName = favoriteToilet;
 			productReference = 6C51DEED288FA6470057B436 /* favoriteToilet.app */;
 			productType = "com.apple.product-type.application";
@@ -105,6 +123,11 @@
 				Base,
 			);
 			mainGroup = 6C51DEE4288FA6470057B436;
+			packageReferences = (
+				6C51DF04288FA72E0057B436 /* XCRemoteSwiftPackageReference "RxSwift" */,
+				6C51DF09288FA73C0057B436 /* XCRemoteSwiftPackageReference "Alamofire" */,
+				6C51DF0F288FA7E10057B436 /* XCRemoteSwiftPackageReference "SnapKit" */,
+			);
 			productRefGroup = 6C51DEEE288FA6470057B436 /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
@@ -119,18 +142,39 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				6C51DF0E288FA79C0057B436 /* .swiftlint.yml in Resources */,
 				6C51DEFA288FA6480057B436 /* Assets.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
 
+/* Begin PBXShellScriptBuildPhase section */
+		6C51DF0C288FA7580057B436 /* ShellScript */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+			);
+			outputFileListPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "export PATH=\"$PATH:/opt/homebrew/bin\"\nif which swiftlint > /dev/null; then\n  swiftlint\nelse\n  echo \"warning: SwiftLint not installed, download from https://github.com/realm/SwiftLint\"\nfi\n";
+		};
+/* End PBXShellScriptBuildPhase section */
+
 /* Begin PBXSourcesBuildPhase section */
 		6C51DEE9288FA6470057B436 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				6C51DEF5288FA6470057B436 /* ViewController.swift in Sources */,
+				6C51DEF5288FA6470057B436 /* MainViewController.swift in Sources */,
 				6C51DEF1288FA6470057B436 /* AppDelegate.swift in Sources */,
 				6C51DEF3288FA6470057B436 /* SceneDelegate.swift in Sources */,
 			);
@@ -329,6 +373,56 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		6C51DF04288FA72E0057B436 /* XCRemoteSwiftPackageReference "RxSwift" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/ReactiveX/RxSwift";
+			requirement = {
+				branch = main;
+				kind = branch;
+			};
+		};
+		6C51DF09288FA73C0057B436 /* XCRemoteSwiftPackageReference "Alamofire" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/Alamofire/Alamofire";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 5.0.0;
+			};
+		};
+		6C51DF0F288FA7E10057B436 /* XCRemoteSwiftPackageReference "SnapKit" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/SnapKit/SnapKit";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 5.0.0;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		6C51DF05288FA72E0057B436 /* RxRelay */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 6C51DF04288FA72E0057B436 /* XCRemoteSwiftPackageReference "RxSwift" */;
+			productName = RxRelay;
+		};
+		6C51DF07288FA72E0057B436 /* RxSwift */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 6C51DF04288FA72E0057B436 /* XCRemoteSwiftPackageReference "RxSwift" */;
+			productName = RxSwift;
+		};
+		6C51DF0A288FA73C0057B436 /* Alamofire */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 6C51DF09288FA73C0057B436 /* XCRemoteSwiftPackageReference "Alamofire" */;
+			productName = Alamofire;
+		};
+		6C51DF10288FA7E10057B436 /* SnapKit */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 6C51DF0F288FA7E10057B436 /* XCRemoteSwiftPackageReference "SnapKit" */;
+			productName = SnapKit;
+		};
+/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = 6C51DEE5288FA6470057B436 /* Project object */;
 }
