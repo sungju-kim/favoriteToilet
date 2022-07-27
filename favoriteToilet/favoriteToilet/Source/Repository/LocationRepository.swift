@@ -36,6 +36,7 @@ final class LocationRepository: NSObject, CLLocationManagerDelegate {
 
     func locationManagerDidChangeAuthorization(_ manager: CLLocationManager) {
         guard let location = manager.location else { return }
-        let CLCoordinate = location.coordinate
+        let coordinate = location.toCooldinate()
+        loadedLocation.accept(coordinate)
     }
 }
