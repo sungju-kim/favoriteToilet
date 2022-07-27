@@ -9,6 +9,7 @@ import UIKit
 import MapKit
 
 final class MapViewController: UIViewController {
+    private let locationRepository = LocationRepository()
     private lazy var mapView: MKMapView = {
        let mapView = MKMapView()
         mapView.showsUserLocation = true

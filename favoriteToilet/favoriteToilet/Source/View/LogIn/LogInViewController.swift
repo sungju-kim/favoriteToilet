@@ -35,8 +35,11 @@ final class LogInViewController: UIViewController {
 
     private lazy var findButton: UIButton = {
         let button = UIButton.plainButton(Constant.LogInView.findToilet)
-        let action = UIAction { _ in
-            // MARK: - TODO: mapView로 화면전환
+        let action = UIAction {[weak self] _ in
+            let tabBarController = MainTabBarController()
+            tabBarController.modalPresentationStyle = .fullScreen
+            tabBarController.modalTransitionStyle = .crossDissolve
+            self?.present(tabBarController, animated: true, completion: nil)
         }
         button.addAction(action, for: .touchUpInside)
         button.isHidden = true
