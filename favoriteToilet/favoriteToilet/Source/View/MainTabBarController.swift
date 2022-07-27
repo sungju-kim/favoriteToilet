@@ -20,13 +20,15 @@ final class MainTabBarController: UITabBarController {
 extension MainTabBarController {
     func configure() {
         tabBar.tintColor = .Custom.text
+        let mapViewController = MapViewController()
+        mapViewController.configure(viewModel: MapViewModel())
 
-        let mapViewController = UINavigationController(rootViewController: MapViewController())
-        mapViewController.tabBarItem.title = "지도"
-        mapViewController.tabBarItem.image = UIImage(systemName: "map")
+        let mapViewNavigationController = UINavigationController(rootViewController: mapViewController)
+        mapViewNavigationController.tabBarItem.title = "지도"
+        mapViewNavigationController.tabBarItem.image = UIImage(systemName: "map")
 
         viewControllers = [
-            mapViewController
+            mapViewNavigationController
         ]
     }
 }
