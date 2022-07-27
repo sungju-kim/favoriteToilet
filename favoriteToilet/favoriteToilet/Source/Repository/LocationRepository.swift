@@ -6,8 +6,10 @@
 //
 
 import MapKit
+import RxRelay
 
 final class LocationRepository: NSObject, CLLocationManagerDelegate {
+    let didLoadLocation = PublishRelay<Coordinate>()
 
     private var locations: [CLLocation] = []
 
@@ -23,7 +25,8 @@ final class LocationRepository: NSObject, CLLocationManagerDelegate {
 
     func getUserLoaction() {
         guard let location = self.locations.last else { return }
-        let CLCoordinate = location.coordinate
+        let coordinate = location.toCooldinate()
+        didLoadLocation.accept(coordinate)
     }
 
     func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
@@ -37,6 +40,6 @@ final class LocationRepository: NSObject, CLLocationManagerDelegate {
     func locationManagerDidChangeAuthorization(_ manager: CLLocationManager) {
         guard let location = manager.location else { return }
         let coordinate = location.toCooldinate()
-        loadedLocation.accept(coordinate)
+        didLoadLocation.accept(coordinate)
     }
 }
