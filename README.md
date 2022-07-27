@@ -11,7 +11,7 @@
 
 ## 실행화면
 
-<img height="640" src="https://tva1.sinaimg.cn/large/e6c9d24egy1h4lse4gj0hg20gf0zku14.gif">
+<img width="320" src="https://user-images.githubusercontent.com/78553659/181260746-7dba96b9-a8b0-4fc2-aa5f-82629d208b3e.gif">
 
 ## 트러블 슈팅
 
