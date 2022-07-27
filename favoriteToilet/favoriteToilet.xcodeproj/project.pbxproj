@@ -20,6 +20,7 @@
 		6C361D33289107D700833E93 /* Informationable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6C361D32289107D700833E93 /* Informationable.swift */; };
 		6C361D352891091700833E93 /* CLLocation + extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6C361D342891091700833E93 /* CLLocation + extension.swift */; };
 		6C4DA74828911BB500FB3BA0 /* Requestable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6C4DA74728911BB500FB3BA0 /* Requestable.swift */; };
+		6C4DA74A28911BC300FB3BA0 /* NetworkError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6C4DA74928911BC300FB3BA0 /* NetworkError.swift */; };
 		6C51DEF1288FA6470057B436 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6C51DEF0288FA6470057B436 /* AppDelegate.swift */; };
 		6C51DEF3288FA6470057B436 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6C51DEF2288FA6470057B436 /* SceneDelegate.swift */; };
 		6C51DEF5288FA6470057B436 /* LogInViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6C51DEF4288FA6470057B436 /* LogInViewController.swift */; };
@@ -54,6 +55,7 @@
 		6C361D32289107D700833E93 /* Informationable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Informationable.swift; sourceTree = "<group>"; };
 		6C361D342891091700833E93 /* CLLocation + extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CLLocation + extension.swift"; sourceTree = "<group>"; };
 		6C4DA74728911BB500FB3BA0 /* Requestable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Requestable.swift; sourceTree = "<group>"; };
+		6C4DA74928911BC300FB3BA0 /* NetworkError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkError.swift; sourceTree = "<group>"; };
 		6C51DEED288FA6470057B436 /* favoriteToilet.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = favoriteToilet.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		6C51DEF0288FA6470057B436 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		6C51DEF2288FA6470057B436 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -129,6 +131,7 @@
 			isa = PBXGroup;
 			children = (
 				6C4DA74728911BB500FB3BA0 /* Requestable.swift */,
+				6C4DA74928911BC300FB3BA0 /* NetworkError.swift */,
 			);
 			path = API;
 			sourceTree = "<group>";
@@ -342,6 +345,7 @@
 			files = (
 				6C51DF1D288FBB5F0057B436 /* UIFont + extension.swift in Sources */,
 				6C51DEF5288FA6470057B436 /* LogInViewController.swift in Sources */,
+				6C4DA74A28911BC300FB3BA0 /* NetworkError.swift in Sources */,
 				6C361D13288FD64C00833E93 /* MainTabBarController.swift in Sources */,
 				6C51DEF1288FA6470057B436 /* AppDelegate.swift in Sources */,
 				6C361D292891035200833E93 /* NetworkInjector.swift in Sources */,
