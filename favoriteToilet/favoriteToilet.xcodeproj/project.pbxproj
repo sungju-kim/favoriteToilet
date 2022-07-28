@@ -40,6 +40,7 @@
 		6C51DF26288FC1990057B436 /* Constraint.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6C51DF25288FC1990057B436 /* Constraint.swift */; };
 		6C51DF29288FC7280057B436 /* UIButton + extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6C51DF28288FC7280057B436 /* UIButton + extension.swift */; };
 		6C51DF2B288FCC0C0057B436 /* Constant.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6C51DF2A288FCC0C0057B436 /* Constant.swift */; };
+		6C766A9A28918D4C00A52089 /* publicToilet.json in Resources */ = {isa = PBXBuildFile; fileRef = 6C766A9928918D4C00A52089 /* publicToilet.json */; };
 		6C9EC9C7289285C600874708 /* MockMapViewRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6C9EC9C6289285C600874708 /* MockMapViewRepository.swift */; };
 		6CACC009289128DE0003463A /* RequestProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6CACC008289128DE0003463A /* RequestProtocol.swift */; };
 /* End PBXBuildFile section */
@@ -76,6 +77,7 @@
 		6C51DF25288FC1990057B436 /* Constraint.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constraint.swift; sourceTree = "<group>"; };
 		6C51DF28288FC7280057B436 /* UIButton + extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIButton + extension.swift"; sourceTree = "<group>"; };
 		6C51DF2A288FCC0C0057B436 /* Constant.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constant.swift; sourceTree = "<group>"; };
+		6C766A9928918D4C00A52089 /* publicToilet.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = publicToilet.json; sourceTree = "<group>"; };
 		6C9EC9C6289285C600874708 /* MockMapViewRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MockMapViewRepository.swift; sourceTree = "<group>"; };
 		6CACC008289128DE0003463A /* RequestProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RequestProtocol.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -107,8 +109,8 @@
 		6C361D16288FDFA500833E93 /* Repository */ = {
 			isa = PBXGroup;
 			children = (
-				6C361D10288FD3FA00833E93 /* LocationRepository.swift */,
 				6C361D26289102D200833E93 /* NetworkContainer.swift */,
+				6C361D10288FD3FA00833E93 /* LocationRepository.swift */,
 				6C9EC9C6289285C600874708 /* MockMapViewRepository.swift */,
 			);
 			path = Repository;
@@ -177,6 +179,7 @@
 		6C51DF12288FBADC0057B436 /* Resource */ = {
 			isa = PBXGroup;
 			children = (
+				6CACC00A28912D060003463A /* MockData */,
 				6C51DF16288FBAF80057B436 /* SF-Pro-Display-Bold.otf */,
 				6C51DF13288FBAF70057B436 /* SF-Pro-Display-Regular.otf */,
 				6C51DF15288FBAF80057B436 /* SF-Pro-Display-Semibold.otf */,
@@ -244,6 +247,14 @@
 				6C361D282891035200833E93 /* NetworkInjector.swift */,
 			);
 			path = Support;
+			sourceTree = "<group>";
+		};
+		6CACC00A28912D060003463A /* MockData */ = {
+			isa = PBXGroup;
+			children = (
+				6C766A9928918D4C00A52089 /* publicToilet.json */,
+			);
+			path = MockData;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -318,6 +329,7 @@
 			files = (
 				6C51DF0E288FA79C0057B436 /* .swiftlint.yml in Resources */,
 				6C51DF17288FBAF80057B436 /* SF-Pro-Display-Regular.otf in Resources */,
+				6C766A9A28918D4C00A52089 /* publicToilet.json in Resources */,
 				6C51DF1A288FBAF80057B436 /* SF-Pro-Display-Bold.otf in Resources */,
 				6C51DF19288FBAF80057B436 /* SF-Pro-Display-Semibold.otf in Resources */,
 				6C51DF18288FBAF80057B436 /* SF-Pro-Text-Regular.otf in Resources */,
