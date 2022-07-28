@@ -12,4 +12,5 @@ final class NetworkContainer {
     static var shared = NetworkContainer()
 
     lazy var locationRepository = LocationRepository()
+    lazy var mapViewRepository = MockMapViewRepository()
 }
