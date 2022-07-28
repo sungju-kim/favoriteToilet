@@ -42,6 +42,7 @@
 		6C51DF2B288FCC0C0057B436 /* Constant.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6C51DF2A288FCC0C0057B436 /* Constant.swift */; };
 		6C766A9A28918D4C00A52089 /* publicToilet.json in Resources */ = {isa = PBXBuildFile; fileRef = 6C766A9928918D4C00A52089 /* publicToilet.json */; };
 		6C9EC9C7289285C600874708 /* MockMapViewRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6C9EC9C6289285C600874708 /* MockMapViewRepository.swift */; };
+		6CACC007289125DA0003463A /* ToiletMapEntity.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6CACC006289125DA0003463A /* ToiletMapEntity.swift */; };
 		6CACC009289128DE0003463A /* RequestProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6CACC008289128DE0003463A /* RequestProtocol.swift */; };
 /* End PBXBuildFile section */
 
@@ -79,6 +80,7 @@
 		6C51DF2A288FCC0C0057B436 /* Constant.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constant.swift; sourceTree = "<group>"; };
 		6C766A9928918D4C00A52089 /* publicToilet.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = publicToilet.json; sourceTree = "<group>"; };
 		6C9EC9C6289285C600874708 /* MockMapViewRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MockMapViewRepository.swift; sourceTree = "<group>"; };
+		6CACC006289125DA0003463A /* ToiletMapEntity.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ToiletMapEntity.swift; sourceTree = "<group>"; };
 		6CACC008289128DE0003463A /* RequestProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RequestProtocol.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -119,6 +121,7 @@
 		6C361D2A2891066F00833E93 /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				6C9EC9C52892852500874708 /* Entity */,
 				6C4DA74628911BA700FB3BA0 /* API */,
 				6C361D2B2891067700833E93 /* Domain */,
 			);
@@ -247,6 +250,14 @@
 				6C361D282891035200833E93 /* NetworkInjector.swift */,
 			);
 			path = Support;
+			sourceTree = "<group>";
+		};
+		6C9EC9C52892852500874708 /* Entity */ = {
+			isa = PBXGroup;
+			children = (
+				6CACC006289125DA0003463A /* ToiletMapEntity.swift */,
+			);
+			path = Entity;
 			sourceTree = "<group>";
 		};
 		6CACC00A28912D060003463A /* MockData */ = {
@@ -385,6 +396,7 @@
 				6C361D11288FD3FA00833E93 /* LocationRepository.swift in Sources */,
 				6C361D27289102D200833E93 /* NetworkContainer.swift in Sources */,
 				6C51DF24288FBF900057B436 /* SloganLabel.swift in Sources */,
+				6CACC007289125DA0003463A /* ToiletMapEntity.swift in Sources */,
 				6C51DF26288FC1990057B436 /* Constraint.swift in Sources */,
 				6C361D2F289107BB00833E93 /* Coordinate.swift in Sources */,
 				6C361D15288FDA5500833E93 /* UIColor + extension.swift in Sources */,
