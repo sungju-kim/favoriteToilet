@@ -8,7 +8,7 @@
 import Foundation
 import Alamofire
 
-protocol Requestable: Decodable {
+protocol Requestable {
     var baseURL: URL? { get }
     var path: String { get }
     var url: URL? { get }

@@ -9,8 +9,8 @@ import CoreLocation.CLLocation
 
 extension CLLocation {
     func toCooldinate() -> Coordinate {
-        return Coordinate(latitude: self.coordinate.longitude,
-                   logitude: self.coordinate.latitude)
+        return Coordinate(latitude: self.coordinate.latitude,
+                          longitude: self.coordinate.longitude)
 
     }
 }
