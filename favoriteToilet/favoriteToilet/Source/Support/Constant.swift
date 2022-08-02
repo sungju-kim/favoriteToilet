@@ -15,4 +15,9 @@ struct Constant {
         static let appleLogIn = "Apple 계정으로 로그인"
         static let findToilet = "화장실 찾기"
     }
+
+    enum MapView {
+        static let range = 3000.0
+        static let delta = 0.01
+    }
 }

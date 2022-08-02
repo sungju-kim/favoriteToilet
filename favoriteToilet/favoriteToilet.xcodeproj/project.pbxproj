@@ -42,6 +42,7 @@
 		6C766A9A28918D4C00A52089 /* publicToilet.json in Resources */ = {isa = PBXBuildFile; fileRef = 6C766A9928918D4C00A52089 /* publicToilet.json */; };
 		6C9EC9C7289285C600874708 /* MockMapViewRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6C9EC9C6289285C600874708 /* MockMapViewRepository.swift */; };
 		6C9EC9CA289378A300874708 /* MockEndPoint.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6C9EC9C9289378A300874708 /* MockEndPoint.swift */; };
+		6C9EC9CC28937B7D00874708 /* MapViewDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6C9EC9CB28937B7D00874708 /* MapViewDelegate.swift */; };
 		6C9EC9D228990A5200874708 /* RxCocoa in Frameworks */ = {isa = PBXBuildFile; productRef = 6C9EC9D128990A5200874708 /* RxCocoa */; };
 		6C9EC9D428991A0E00874708 /* Marker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6C9EC9D328991A0E00874708 /* Marker.swift */; };
 		6CACC007289125DA0003463A /* ToiletMapEntity.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6CACC006289125DA0003463A /* ToiletMapEntity.swift */; };
@@ -82,6 +83,7 @@
 		6C766A9928918D4C00A52089 /* publicToilet.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = publicToilet.json; sourceTree = "<group>"; };
 		6C9EC9C6289285C600874708 /* MockMapViewRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MockMapViewRepository.swift; sourceTree = "<group>"; };
 		6C9EC9C9289378A300874708 /* MockEndPoint.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MockEndPoint.swift; sourceTree = "<group>"; };
+		6C9EC9CB28937B7D00874708 /* MapViewDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapViewDelegate.swift; sourceTree = "<group>"; };
 		6C9EC9D328991A0E00874708 /* Marker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Marker.swift; sourceTree = "<group>"; };
 		6CACC006289125DA0003463A /* ToiletMapEntity.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ToiletMapEntity.swift; sourceTree = "<group>"; };
 		6CACC008289128DE0003463A /* RequestProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RequestProtocol.swift; sourceTree = "<group>"; };
@@ -108,6 +110,7 @@
 			children = (
 				6C361D0A288FD30800833E93 /* MapViewController.swift */,
 				6C361D242891000400833E93 /* MapViewModel.swift */,
+				6C9EC9CB28937B7D00874708 /* MapViewDelegate.swift */,
 			);
 			path = Map;
 			sourceTree = "<group>";
@@ -390,6 +393,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				6C9EC9CC28937B7D00874708 /* MapViewDelegate.swift in Sources */,
 				6C51DF1D288FBB5F0057B436 /* UIFont + extension.swift in Sources */,
 				6C9EC9C7289285C600874708 /* MockMapViewRepository.swift in Sources */,
 				6C51DEF5288FA6470057B436 /* LogInViewController.swift in Sources */,

@@ -7,11 +7,17 @@
 
 import UIKit
 import MapKit
+import RxSwift
+import RxCocoa
 
 final class MapViewController: UIViewController {
     private var viewModel: MapViewModel?
+    private var disposeBag = DisposeBag()
+
+    private let mapViewDelegate = MapViewDelegate()
     private lazy var mapView: MKMapView = {
-       let mapView = MKMapView()
+        let mapView = MKMapView()
+        mapView.delegate = mapViewDelegate
         mapView.showsUserLocation = true
         return mapView
     }()
@@ -40,5 +46,42 @@ private extension MapViewController {
 extension MapViewController {
     func configure(viewModel: MapViewModel) {
         self.viewModel = viewModel
+
+        let coordinate = viewModel.didLoadLocation
+            .share()
+
+        coordinate
+            .map {
+                let spanValue = MKCoordinateSpan(latitudeDelta: Constant.MapView.delta,
+                                                 longitudeDelta: Constant.MapView.delta)
+                let locationRegion = MKCoordinateRegion(center: $0,
+                                                        span: spanValue)
+                return (locationRegion, true)
+            }
+            .bind(onNext: mapView.setRegion)
+            .disposed(by: disposeBag)
+
+        viewModel.didLoadToilets
+            .bind(to: mapViewDelegate.didLoadToilets)
+            .disposed(by: disposeBag)
+
+        Observable.combineLatest(
+            mapViewDelegate.didCreateMarker.asObservable(),
+            coordinate.asObservable())
+        .bind(onNext: createAnnotation)
+        .disposed(by: disposeBag)
+
+        viewModel.loadData.accept(())
+    }
+
+    func createAnnotation(_ data: ([Marker], CLLocationCoordinate2D)) {
+        let (markers, coordinate) = data
+        let viewRange = CLCircularRegion(center: coordinate,
+                                         radius: Constant.MapView.range,
+                                         identifier: "viewRange")
+
+        markers
+            .filter { viewRange.contains($0.coordinate) }
+            .forEach { self.mapView.addAnnotation($0) }
     }
 }
