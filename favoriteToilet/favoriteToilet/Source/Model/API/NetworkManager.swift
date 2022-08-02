@@ -12,10 +12,10 @@ import Alamofire
 class NetworkManager: RequestProtocol {
     private init() {}
 
-    func request<T: Decodable>(endPoint: Requestable) -> Observable<T> {
-        return Observable.create { observer in
+    func request<T: Decodable>(endPoint: Requestable) -> Single<T> {
+        return Single.create { observer in
             guard let url = endPoint.url else {
-                observer.onError(NetworkError.invalidURL)
+                observer(.failure(NetworkError.invalidURL))
                 return Disposables.create {}
             }
 
@@ -30,15 +30,14 @@ class NetworkManager: RequestProtocol {
                 .validate(statusCode: 200..<300)
                 .response { response in
                     guard let data = response.data else {
-                        observer.onError(NetworkError.emptyData)
+                        observer(.failure(NetworkError.emptyData))
                         return
                     }
                     guard let decodedData = try? JSONDecoder().decode(T.self, from: data) else {
-                        observer.onError(NetworkError.failToDecode)
+                        observer(.failure(NetworkError.failToDecode))
                         return
                     }
-                    observer.onNext(decodedData)
-                    observer.onCompleted()
+                    observer(.success(decodedData))
                 }
             return Disposables.create {}
         }

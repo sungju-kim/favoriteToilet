@@ -9,5 +9,5 @@ import Foundation
 import RxSwift
 
 protocol RequestProtocol {
-    func request<T: Decodable>(endPoint: Requestable) -> Observable<T>
+    func request<T: Decodable>(endPoint: Requestable) -> Single<T>
 }
