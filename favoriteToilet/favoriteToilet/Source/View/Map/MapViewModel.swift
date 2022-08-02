@@ -7,10 +7,21 @@
 
 import Foundation
 import RxRelay
+import RxSwift
+import RxCocoa
+import CoreLocation
 
 final class MapViewModel {
     @NetworkInjector(keypath: \.locationRepository)
     private var locationManager: LocationRepository
+
+    @NetworkInjector(keypath: \.mapViewRepository)
+    private var networkManager: MockMapViewRepository
+
+    private let disposeBag = DisposeBag()
+    let loadData = PublishRelay<Void>()
+    let didLoadLocation = PublishRelay<CLLocationCoordinate2D>()
+    let didLoadToilets = PublishRelay<ToiletMapEntity>()
 
     init() {
         subscribe()
@@ -21,8 +32,23 @@ final class MapViewModel {
 
 private extension MapViewModel {
     func subscribe() {
-        _ = locationManager.didLoadLocation.subscribe { coordinate in
-            // MARK: - TODO Network request
-        }
+        let requestData = loadData
+            .withUnretained(self)
+            .flatMapLatest { model, _ -> Single<ToiletMapEntity> in
+                model.networkManager.request(endPoint: MockEndPoint())
+            }
+            .share()
+
+        requestData
+            .subscribe(onNext: {[weak self] entity in
+                self?.didLoadToilets.accept(entity)
+            }, onError: { error in
+                // MARK: - TODO : Error Handling
+            })
+            .disposed(by: disposeBag)
+
+        locationManager.didLoadLocation
+            .bind(to: didLoadLocation)
+            .disposed(by: disposeBag)
     }
 }
