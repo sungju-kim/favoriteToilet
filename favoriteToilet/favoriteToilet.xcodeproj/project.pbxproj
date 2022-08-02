@@ -42,6 +42,7 @@
 		6C51DF2B288FCC0C0057B436 /* Constant.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6C51DF2A288FCC0C0057B436 /* Constant.swift */; };
 		6C766A9A28918D4C00A52089 /* publicToilet.json in Resources */ = {isa = PBXBuildFile; fileRef = 6C766A9928918D4C00A52089 /* publicToilet.json */; };
 		6C9EC9C7289285C600874708 /* MockMapViewRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6C9EC9C6289285C600874708 /* MockMapViewRepository.swift */; };
+		6C9EC9D428991A0E00874708 /* Marker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6C9EC9D328991A0E00874708 /* Marker.swift */; };
 		6CACC007289125DA0003463A /* ToiletMapEntity.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6CACC006289125DA0003463A /* ToiletMapEntity.swift */; };
 		6CACC009289128DE0003463A /* RequestProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6CACC008289128DE0003463A /* RequestProtocol.swift */; };
 /* End PBXBuildFile section */
@@ -80,6 +81,7 @@
 		6C51DF2A288FCC0C0057B436 /* Constant.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constant.swift; sourceTree = "<group>"; };
 		6C766A9928918D4C00A52089 /* publicToilet.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = publicToilet.json; sourceTree = "<group>"; };
 		6C9EC9C6289285C600874708 /* MockMapViewRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MockMapViewRepository.swift; sourceTree = "<group>"; };
+		6C9EC9D328991A0E00874708 /* Marker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Marker.swift; sourceTree = "<group>"; };
 		6CACC006289125DA0003463A /* ToiletMapEntity.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ToiletMapEntity.swift; sourceTree = "<group>"; };
 		6CACC008289128DE0003463A /* RequestProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RequestProtocol.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -135,6 +137,7 @@
 				6C361D2E289107BB00833E93 /* Coordinate.swift */,
 				6C361D30289107C800833E93 /* StarRate.swift */,
 				6C361D32289107D700833E93 /* Informationable.swift */,
+				6C9EC9D328991A0E00874708 /* Marker.swift */,
 			);
 			path = Domain;
 			sourceTree = "<group>";
@@ -392,6 +395,7 @@
 				6C361D2D2891067D00833E93 /* Toilet.swift in Sources */,
 				6C51DF29288FC7280057B436 /* UIButton + extension.swift in Sources */,
 				6C361D352891091700833E93 /* CLLocation + extension.swift in Sources */,
+				6C9EC9D428991A0E00874708 /* Marker.swift in Sources */,
 				6C51DEF3288FA6470057B436 /* SceneDelegate.swift in Sources */,
 				6C361D11288FD3FA00833E93 /* LocationRepository.swift in Sources */,
 				6C361D27289102D200833E93 /* NetworkContainer.swift in Sources */,
