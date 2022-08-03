@@ -8,10 +8,11 @@
   - Apple로 로그인 버튼 구현 (OAuth 기능 미구현)
 - 지도탭 MapView 구현
   - 사용자 위치정보 받아와서 지도에 표시
+- 사용자 위치기준 3km 반경 화장실  표시
 
 ## 실행화면
 
-<img width="320" src="https://user-images.githubusercontent.com/78553659/181260746-7dba96b9-a8b0-4fc2-aa5f-82629d208b3e.gif">
+<img width="320" src="https://user-images.githubusercontent.com/78553659/182527470-88e647b9-b4de-44af-8c9a-65acf693353d.gif">
 
 ## 트러블 슈팅
 
@@ -56,4 +57,26 @@
 - 앱으로 돌아올때
 - 지도탭으로 돌아올때
 - 사용자가 요청할때
+
+
+
+### 객체간 데이터 전달방법
+
+**문제**
+
+`MapViewModel` 과 `MapViewDeleagate` 두 객체에서 전달된 사용자 위치, 근처 화장실 정보를 바탕으로 생성된 `Marker`를 화면에 표시하기
+
+**고민**
+
+- `MapViewModel`에서 사용자 위치가 전달될때와 `MapViewDelegate`에서 생성된 `Marker`를 전달하는 시기가 다른 문제.
+
+**해결방안**
+
+- `MapViewController`에 사용자 위치 저장해두기
+  - 가장 간단한 해결방법이지만, `ViewController`가 데이터를 가지고 있어야하는 문제
+- 두 객체에서 값이 모두 전달되었을때 실행할 수 있도록 구현
+
+**구현**
+
+Rx의 `Observable.combineLatest` 메소드를 사용하여 두객체에서 값이 모두 전달되었을때 실행 하도록 구현.
 
