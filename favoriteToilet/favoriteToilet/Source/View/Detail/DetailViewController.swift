@@ -26,27 +26,7 @@ final class DetailViewController: UIViewController {
         return stackView
     }()
 
-    private lazy var starRate: UIStackView = {
-        let stackView = UIStackView()
-        stackView.axis = .horizontal
-        stackView.distribution = .fillEqually
-        (0...4).forEach { order in
-            let button = UIButton()
-            button.setImage(UIImage(systemName: "star"), for: .normal)
-            button.addAction(UIAction { _ in
-                stackView.subviews[0...order].forEach { subview in
-                    guard let subview = subview as? UIButton else { return }
-                    subview.setImage(UIImage(systemName: "star.fill"), for: .normal)
-                }
-                stackView.subviews[(order+1)...].forEach { subview in
-                    guard let subview = subview as? UIButton else { return }
-                    subview.setImage(UIImage(systemName: "star"), for: .normal)
-                }
-            }, for: .touchUpInside)
-            stackView.addArrangedSubview(button)
-        }
-        return stackView
-    }()
+    private lazy var starRate = StarRateView()
 
     private lazy var commentTableView: UITableView = {
         let tableView = UITableView()
