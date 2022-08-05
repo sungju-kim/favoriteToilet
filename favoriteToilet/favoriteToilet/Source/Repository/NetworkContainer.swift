@@ -13,4 +13,5 @@ final class NetworkContainer {
 
     lazy var locationRepository = LocationRepository()
     lazy var mapViewRepository = MockMapViewRepository()
+    lazy var detailViewRepository = MockDetailViewRepository()
 }
