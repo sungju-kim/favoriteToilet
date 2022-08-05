@@ -12,7 +12,7 @@ import RxSwift
 final class MapViewDelegate: NSObject, MKMapViewDelegate {
 
     private let disposeBag = DisposeBag()
-    let didLoadToilets = PublishRelay<ToiletMapEntity>()
+    let didLoadToilets = PublishRelay<[Toilet]>()
     let didCreateMarker = PublishRelay<[Marker]>()
     let didPinTouched = PublishRelay<UUID>()
 
@@ -51,13 +51,13 @@ private extension MapViewDelegate {
             .disposed(by: disposeBag)
     }
 
-    func createMarker(_ markerInform: ToiletMapEntity?) {
-        let markers = markerInform?.compactMap { (information) -> Marker? in
+    func createMarker(_ markerInform: [Toilet]) {
+        let markers = markerInform.compactMap { (information) -> Marker? in
             let id = information.id
             let title = information.name
             let subtitle = information.address
-            guard let latitude = information.latitude else { return nil }
-            guard let longitude = information.longitude else { return nil }
+            let latitude = information.coordinate.latitude
+            let longitude = information.coordinate.longitude
             let newMarker = Marker(id: id,
                                    title: title,
                                    subtitle: subtitle,
@@ -65,7 +65,6 @@ private extension MapViewDelegate {
                                                                       longitude: longitude))
             return newMarker
         }
-        guard let markers = markers else { return }
         didCreateMarker.accept(markers)
     }
 }
