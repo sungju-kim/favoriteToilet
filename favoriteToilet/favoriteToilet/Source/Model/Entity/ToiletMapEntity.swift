@@ -10,6 +10,7 @@ import Foundation
 typealias ToiletMapEntity = [ToiletEntity]
 
 struct ToiletEntity: Codable {
+    let id: UUID
     let type: String
     let name: String
     let openTime: String

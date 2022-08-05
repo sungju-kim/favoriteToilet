@@ -14,6 +14,7 @@ final class MapViewDelegate: NSObject, MKMapViewDelegate {
     private let disposeBag = DisposeBag()
     let didLoadToilets = PublishRelay<ToiletMapEntity>()
     let didCreateMarker = PublishRelay<[Marker]>()
+    let didPinTouched = PublishRelay<UUID>()
 
     override init() {
         super.init()
@@ -21,7 +22,7 @@ final class MapViewDelegate: NSObject, MKMapViewDelegate {
     }
 
     func mapView(_ mapView: MKMapView, viewFor annotation: MKAnnotation) -> MKAnnotationView? {
-        if annotation is MKUserLocation { return nil }
+        guard let annotation = annotation as? Marker else { return nil }
 
         if let annotationView = mapView.dequeueReusableAnnotationView(withIdentifier: "") {
             annotationView.annotation = annotation
@@ -33,8 +34,8 @@ final class MapViewDelegate: NSObject, MKMapViewDelegate {
 
             let btn = UIButton(type: .detailDisclosure)
             annotationView.rightCalloutAccessoryView = btn
-            btn.addAction(UIAction { _ in
-                // MARK: - TODO Pin Touch Action
+            btn.addAction(UIAction {[weak self] _ in
+                self?.didPinTouched.accept(annotation.id)
             }, for: .touchUpInside)
             return annotationView
         }
@@ -52,11 +53,13 @@ private extension MapViewDelegate {
 
     func createMarker(_ markerInform: ToiletMapEntity?) {
         let markers = markerInform?.compactMap { (information) -> Marker? in
+            let id = information.id
             let title = information.name
             let subtitle = information.address
             guard let latitude = information.latitude else { return nil }
             guard let longitude = information.longitude else { return nil }
-            let newMarker = Marker(title: title,
+            let newMarker = Marker(id: id,
+                                   title: title,
                                    subtitle: subtitle,
                                    coordinate: CLLocationCoordinate2D(latitude: latitude,
                                                                       longitude: longitude))
