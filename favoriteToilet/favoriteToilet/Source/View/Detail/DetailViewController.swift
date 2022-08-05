@@ -55,6 +55,9 @@ final class DetailViewController: UIViewController {
             informationStackView.addArrangedSubview(label)
         }
     }
+
+    private func showComments(_ comments: [Comment]) {
+    }
 }
 
 // MARK: - Configure
@@ -63,6 +66,10 @@ extension DetailViewController {
     func configure(with viewModel: DetailViewModel) {
         viewModel.loadToilet
             .bind(onNext: showInformation)
+            .disposed(by: disposeBag)
+
+        viewModel.loadComments
+            .bind(onNext: showComments)
             .disposed(by: disposeBag)
     }
 }
