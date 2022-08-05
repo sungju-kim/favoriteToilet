@@ -7,22 +7,26 @@
 
 import UIKit
 import SnapKit
+import RxSwift
 
 final class DetailViewController: UIViewController {
+
+    private var disposeBag = DisposeBag()
 
     private lazy var titleLabel: UILabel = {
         let label = UILabel()
         label.font = .SFProDisplay.bold(40)
         label.textColor = .Custom.text
-        label.textAlignment = .right
+        label.textAlignment = .left
         return label
     }()
 
     private lazy var informationStackView: UIStackView = {
         let stackView = UIStackView()
         stackView.distribution = .fill
-        stackView.alignment = .trailing
+        stackView.alignment = .leading
         stackView.axis = .vertical
+        stackView.spacing = Constraint.min
         return stackView
     }()
 
@@ -40,6 +44,26 @@ final class DetailViewController: UIViewController {
         layoutInformationStackView()
         layoutStarRate()
         layoutCommentTableView()
+    }
+
+    private func showInformation(_ toilet: Toilet) {
+        titleLabel.text = toilet.name
+        toilet.information.forEach {
+            let label = UILabel()
+            label.text = $0.contents
+            label.font = .SFProText.regular(18)
+            informationStackView.addArrangedSubview(label)
+        }
+    }
+}
+
+// MARK: - Configure
+
+extension DetailViewController {
+    func configure(with viewModel: DetailViewModel) {
+        viewModel.loadToilet
+            .bind(onNext: showInformation)
+            .disposed(by: disposeBag)
     }
 }
 

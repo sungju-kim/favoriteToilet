@@ -29,6 +29,31 @@ final class MapViewController: UIViewController {
     }
 }
 
+// MARK: - Private Function
+private extension MapViewController {
+    func createAnnotation(_ data: ([Marker], CLLocationCoordinate2D)) {
+        let (markers, coordinate) = data
+        let viewRange = CLCircularRegion(center: coordinate,
+                                         radius: Constant.MapView.range,
+                                         identifier: "viewRange")
+
+        markers
+            .filter { viewRange.contains($0.coordinate) }
+            .forEach { self.mapView.addAnnotation($0) }
+    }
+
+    func pushDetailView(_ id: UUID) {
+        let detailViewController = DetailViewController()
+        guard let toilet = viewModel?[id] else { return }
+        let viewModel = DetailViewModel()
+        detailViewController.configure(with: viewModel)
+
+        viewModel.configure(with: toilet)
+
+        navigationController?.pushViewController(detailViewController, animated: true)
+    }
+}
+
 // MARK: - Layout Section
 
 private extension MapViewController {
@@ -71,17 +96,10 @@ extension MapViewController {
         .bind(onNext: createAnnotation)
         .disposed(by: disposeBag)
 
+        mapViewDelegate.didPinTouched
+            .bind(onNext: pushDetailView)
+            .disposed(by: disposeBag)
+
         viewModel.loadData.accept(())
-    }
-
-    func createAnnotation(_ data: ([Marker], CLLocationCoordinate2D)) {
-        let (markers, coordinate) = data
-        let viewRange = CLCircularRegion(center: coordinate,
-                                         radius: Constant.MapView.range,
-                                         identifier: "viewRange")
-
-        markers
-            .filter { viewRange.contains($0.coordinate) }
-            .forEach { self.mapView.addAnnotation($0) }
     }
 }
