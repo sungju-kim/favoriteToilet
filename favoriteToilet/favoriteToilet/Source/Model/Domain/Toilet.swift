@@ -8,9 +8,10 @@
 import Foundation
 
 struct Toilet {
+    let id: UUID
     let name: String
     let address: String
     let coordinate: Coordinate
     var starRate: StarRate
-    let information: [Informationable]
+    let information: [Information]
 }
