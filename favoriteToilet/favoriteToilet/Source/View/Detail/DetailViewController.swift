@@ -16,6 +16,7 @@ final class DetailViewController: UIViewController {
     private lazy var titleLabel: UILabel = {
         let label = UILabel()
         label.font = .SFProDisplay.bold(40)
+        label.numberOfLines = 0
         label.textColor = .Custom.text
         label.textAlignment = .left
         return label
@@ -40,6 +41,7 @@ final class DetailViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
+        view.backgroundColor = .systemBackground
         layoutTitleLabel()
         layoutInformationStackView()
         layoutStarRate()
