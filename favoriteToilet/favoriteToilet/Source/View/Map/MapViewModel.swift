@@ -12,6 +12,11 @@ import RxCocoa
 import CoreLocation
 
 final class MapViewModel {
+    private var toiltes: [UUID: Toilet] = [:]
+    subscript(id: UUID) -> Toilet? {
+        return toiltes[id]
+    }
+
     @NetworkInjector(keypath: \.locationRepository)
     private var locationManager: LocationRepository
 
@@ -21,7 +26,7 @@ final class MapViewModel {
     private let disposeBag = DisposeBag()
     let loadData = PublishRelay<Void>()
     let didLoadLocation = PublishRelay<CLLocationCoordinate2D>()
-    let didLoadToilets = PublishRelay<ToiletMapEntity>()
+    let didLoadToilets = PublishRelay<[Toilet]>()
 
     init() {
         subscribe()
@@ -41,7 +46,12 @@ private extension MapViewModel {
 
         requestData
             .subscribe(onNext: {[weak self] entity in
-                self?.didLoadToilets.accept(entity)
+                let domains = entity.compactMap { $0.toDomain() }
+
+                domains.forEach {[weak self] toilet in
+                    self?.toiltes[toilet.id] = toilet
+                }
+                self?.didLoadToilets.accept(domains)
             }, onError: { error in
                 // MARK: - TODO : Error Handling
             })
