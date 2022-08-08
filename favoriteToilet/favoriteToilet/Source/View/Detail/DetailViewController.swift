@@ -41,9 +41,14 @@ final class DetailViewController: UIViewController {
         return textField
     }()
 
-    private lazy var commentTableView: UITableView = {
-        let tableView = UITableView()
-        return tableView
+    private let commentsDataSource = CommentsDataSource()
+    private lazy var commentsCollectionView: UICollectionView = {
+        let layout = UICollectionViewCompositionalLayout(section: commentsDataSource.section)
+        let collectionView = UICollectionView(frame: .zero, collectionViewLayout: layout)
+        collectionView.register(CommentCell.self, forCellWithReuseIdentifier: CommentCell.identifier)
+        collectionView.dataSource = commentsDataSource
+        collectionView.allowsSelection = false
+        return collectionView
     }()
 
     override func viewDidLoad() {
@@ -68,6 +73,7 @@ final class DetailViewController: UIViewController {
     }
 
     private func showComments(_ comments: [Comment]) {
+        commentsDataSource.configure(with: comments)
     }
 }
 
@@ -125,9 +131,9 @@ private extension DetailViewController {
     }
 
     func layoutCommentTableView() {
-        view.addSubview(commentTableView)
+        view.addSubview(commentsCollectionView)
 
-        commentTableView.snp.makeConstraints { make in
+        commentsCollectionView.snp.makeConstraints { make in
             make.leading.trailing.bottom.equalTo(view.safeAreaLayoutGuide).inset(Constraint.min)
             make.top.equalTo(userComment.snp.bottom).offset(Constraint.min)
         }
