@@ -33,6 +33,14 @@ final class DetailViewController: UIViewController {
 
     private lazy var starRate = StarRateView()
 
+    private lazy var userComment: UITextField = {
+        let textField = UITextField()
+        textField.font = .SFProText.regular(18)
+        textField.placeholder = "한줄평을 입력해주세요"
+        textField.textColor = .Custom.text
+        return textField
+    }()
+
     private lazy var commentTableView: UITableView = {
         let tableView = UITableView()
         return tableView
@@ -45,6 +53,7 @@ final class DetailViewController: UIViewController {
         layoutTitleLabel()
         layoutInformationStackView()
         layoutStarRate()
+        layoutUserComment()
         layoutCommentTableView()
     }
 
@@ -53,7 +62,7 @@ final class DetailViewController: UIViewController {
         toilet.information.forEach {
             let label = UILabel()
             label.text = $0.contents
-            label.font = .SFProText.regular(18)
+            label.font = .SFProDisplay.regular(18)
             informationStackView.addArrangedSubview(label)
         }
     }
@@ -106,12 +115,21 @@ private extension DetailViewController {
         }
     }
 
+    func layoutUserComment() {
+        view.addSubview(userComment)
+
+        userComment.snp.makeConstraints { make in
+            make.top.equalTo(starRate.snp.bottom).offset(Constraint.min)
+            make.leading.trailing.equalToSuperview().inset(Constraint.max)
+        }
+    }
+
     func layoutCommentTableView() {
         view.addSubview(commentTableView)
 
         commentTableView.snp.makeConstraints { make in
             make.leading.trailing.bottom.equalTo(view.safeAreaLayoutGuide).inset(Constraint.min)
-            make.top.equalTo(starRate.snp.bottom).offset(Constraint.min)
+            make.top.equalTo(userComment.snp.bottom).offset(Constraint.min)
         }
     }
 }
