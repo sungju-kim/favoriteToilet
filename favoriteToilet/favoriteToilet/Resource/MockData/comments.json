@@ -1,11 +1,13 @@
 [
   {
-    "id" : "1508B4CC-0803-4126-8242-50CBA2A3AC02",
+    "starRate" : 4,
+    "id" : "6ED2B9CA-C3BB-4549-90CB-AC4ABA756096",
     "contents" : "화장실이 너무 좋아요~",
     "writer" : "익명"
   },
   {
-    "id" : "9BA2C044-47EC-48BF-939D-5CE24061936D",
+    "starRate" : 4.5,
+    "id" : "CDF77F3B-665B-45F4-9BBD-34DCC112F91A",
     "contents" : "깔끔합니다!",
     "writer" : "익명"
   }

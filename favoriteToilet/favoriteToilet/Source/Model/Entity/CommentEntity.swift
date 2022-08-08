@@ -11,12 +11,13 @@ struct CommentEntity: Codable {
     let id: UUID
     let writer: String
     let contents: String
+    let starRate: Double
 }
 
 extension CommentEntity {
     func toDomain() -> Comment {
         return Comment(id: id,
                        writer: writer,
-                       contents: contents)
+                       contents: contents, starRate: starRate)
     }
 }

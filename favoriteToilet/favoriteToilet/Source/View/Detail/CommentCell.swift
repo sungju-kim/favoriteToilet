@@ -14,15 +14,11 @@ final class CommentCell: UICollectionViewCell {
     private lazy var userIDLabel: UILabel = {
         let label = UILabel()
         label.textColor = .Custom.userID
-        label.font = .SFProDisplay.bold(20)
+        label.font = .SFProDisplay.bold(18)
         return label
     }()
 
-    private lazy var starRateLabel: UILabel = {
-        let label = UILabel()
-
-        return label
-    }()
+    private lazy var starRateLabel = StarRateLabel()
 
     private lazy var contentLabel: UILabel = {
         let label = UILabel()
@@ -34,12 +30,14 @@ final class CommentCell: UICollectionViewCell {
     override init(frame: CGRect) {
         super.init(frame: frame)
         layoutUserIDLabel()
+        layoutStarRateLabel()
         layoutContentsView()
     }
 
     required init?(coder: NSCoder) {
         super.init(coder: coder)
         layoutUserIDLabel()
+        layoutStarRateLabel()
         layoutContentsView()
     }
 }
@@ -51,7 +49,16 @@ private extension CommentCell {
         contentView.addSubview(userIDLabel)
 
         userIDLabel.snp.makeConstraints { make in
-            make.leading.trailing.top.equalToSuperview()
+            make.leading.top.equalToSuperview()
+        }
+    }
+
+    func layoutStarRateLabel() {
+        contentView.addSubview(starRateLabel)
+
+        starRateLabel.snp.makeConstraints { make in
+            make.bottom.equalTo(userIDLabel.snp.bottom)
+            make.leading.equalTo(userIDLabel.snp.trailing).offset(Constraint.min)
         }
     }
 
@@ -72,5 +79,6 @@ extension CommentCell {
     func configure(with comment: Comment) {
         self.userIDLabel.text = comment.writer
         self.contentLabel.text = comment.contents
+        self.starRateLabel.setUserRate(rate: comment.starRate)
     }
 }

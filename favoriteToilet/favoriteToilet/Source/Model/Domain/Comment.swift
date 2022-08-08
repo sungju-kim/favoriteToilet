@@ -11,4 +11,5 @@ struct Comment {
     let id: UUID
     let writer: String
     let contents: String
+    let starRate: Double
 }
