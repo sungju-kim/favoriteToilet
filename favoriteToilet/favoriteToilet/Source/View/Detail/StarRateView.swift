@@ -12,7 +12,7 @@ final class StarRateView: UIView {
 
     private lazy var visibleView: UIView = {
         let view = UIView()
-        view.backgroundColor = .red
+        view.backgroundColor = .systemYellow
         view.alpha = 0.5
         return view
     }()
@@ -26,7 +26,7 @@ final class StarRateView: UIView {
             let image = UIImage(systemName: "star", withConfiguration: configuration)
             var imageView = UIImageView(image: image)
             imageView.contentMode = .scaleAspectFit
-            imageView.tintColor = .red
+            imageView.tintColor = .systemYellow
             stackView.addArrangedSubview(imageView)
         }
         return stackView
