@@ -35,9 +35,20 @@ final class DetailViewController: UIViewController {
 
     private lazy var userComment: UITextField = {
         let textField = UITextField()
+
         textField.font = .SFProText.regular(18)
         textField.placeholder = "한줄평을 입력해주세요"
         textField.textColor = .Custom.text
+
+        let button = UIButton(type: .custom)
+        button.setImage(UIImage(systemName: "x.circle.fill"), for: .normal)
+        button.contentMode = .scaleAspectFit
+        button.addAction(UIAction { _ in
+            self.userComment.text = ""
+        }, for: .touchUpInside)
+        button.tintColor = .lightGray
+        textField.rightView = button
+        textField.rightViewMode = .whileEditing
         return textField
     }()
 
