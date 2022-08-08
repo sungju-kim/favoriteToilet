@@ -11,5 +11,6 @@ extension UIColor {
     enum Custom {
         static let backGround = UIColor.systemBackground
         static let text = UIColor.black
+        static let userID = UIColor.blue
     }
 }
