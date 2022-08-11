@@ -40,15 +40,15 @@ final class DetailViewController: UIViewController {
         textField.placeholder = "한줄평을 입력해주세요"
         textField.textColor = .Custom.text
 
-        let button = UIButton(type: .custom)
-        button.setImage(UIImage(systemName: "x.circle.fill"), for: .normal)
-        button.contentMode = .scaleAspectFit
+        var config = UIButton.Configuration.filled()
+        config.title = "입력"
+        let button = UIButton.init(configuration: config)
         button.addAction(UIAction { _ in
+            // MARK: - TODO: userComment 전달 로직
             self.userComment.text = ""
         }, for: .touchUpInside)
-        button.tintColor = .lightGray
         textField.rightView = button
-        textField.rightViewMode = .whileEditing
+        textField.rightViewMode = .always
         return textField
     }()
 
