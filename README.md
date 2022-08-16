@@ -9,14 +9,15 @@
 - 지도탭 MapView 구현
   - 사용자 위치정보 받아와서 지도에 표시
 - 사용자 위치기준 3km 반경 화장실  표시
+- 핀 터치시 해당 화장실 정보 표시
 
 ## 실행화면
 
-<img width="320" src="https://user-images.githubusercontent.com/78553659/182527470-88e647b9-b4de-44af-8c9a-65acf693353d.gif">
+<img width="320" src="https://user-images.githubusercontent.com/78553659/184831415-fa260efd-7601-4154-ad29-7e1f051a7e74.gif">
 
 ## 트러블 슈팅
-
-### 사용자 위치 업데이트 주기
+<details>
+<summary>사용자 위치 업데이트 주기</summary>
 
 **문제**
 
@@ -58,9 +59,9 @@
 - 지도탭으로 돌아올때
 - 사용자가 요청할때
 
-
-
-### 객체간 데이터 전달방법
+</details>
+<details>
+<summary>객체간 데이터 전달방법</summary>
 
 **문제**
 
@@ -79,4 +80,47 @@
 **구현**
 
 Rx의 `Observable.combineLatest` 메소드를 사용하여 두객체에서 값이 모두 전달되었을때 실행 하도록 구현.
+</details>
+<details>
+<summary>별점 표시 방법</summary>
 
+**문제**
+기존에 스택뷰에 5섯개의 `UIButton`을 추가하여 사용했지만, 별 버튼이 눌렸을때 이전의 버튼의 색상을 변경한다는 단점이 존재
+**해결방안**
+스택뷰가아닌 `UIView`와 `mask`를 이용하여 표시
+
+**해결**
+`StarRateView`를 커스텀으로 생성하고 `backgroundView`, `foregroundView`, `visibleView`를 subView에 추가, `visibleView`의 mask를 `foregroundView` 로 만들어줌.
+superView가 터치되면 `visibleView`의 `width`를 바꾸어 주는 방법으로 별점의 색을 변화시키는 방법 사용
+</details>
+<details>
+<summary>화장실 정보 표시 방법</summary>
+
+**문제**
+기존 프로젝트의 경우 화장실의 이름, 타입 정도의 데이터만 전달하였기에 `Marker`의 정보를 전달하는 방식으로 사용.
+
+**고민**
+현재 프로젝트의 경우 유저의 별점정보, 저장된 한줄평 정보를 보여줘야하며, `Marker`에 모든 정보를 담기에는 메모리 용량이 많이 필요하다고 판단.
+
+**해결방안**
+`Marker`에 ID값을 저장하고, 핀 터치시 해당 ID값을 전달해주는 방법을 사용하여 `DetailView`로 이동시 서버로부터 해당 화장실정보를 요청.
+
+**구현**
+`MapViewModel`에 `[UUID: Toilet]` 형태로 저장하고, 핀이 터치되었을때 해당 화장실 정보를 넘겨주는 방식으로 구현
+
+**구현예정**
+`MapViewModel`에 저장하지않고 서버에 ID값으로 화장실 정보 요청
+</details>
+<details>
+<summary>한줄평 데이터 전달 방법 </summary>
+
+**문제**
+
+사용자가 한줄평을 입력했을때, `collectionView`와 서버에 모두 반영이 되어야함.
+
+**고민**
+1. 사용자가 한줄평을 입력했을때, `collectionView`에 바로 전달하여 표시할 수 있지만, 사용자가 맵뷰로 이동한후 다시 핀을 터치했을때 반영이 안됨.
+
+**해결방안**
+사용자가 한줄평을 입력 -> 서버에 저장 -> 서버로부터 한줄평 데이터 요청 -> 받아온 데이터로 한줄평 표시
+</details>
