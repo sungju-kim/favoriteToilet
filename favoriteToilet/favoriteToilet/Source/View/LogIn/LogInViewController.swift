@@ -7,6 +7,7 @@
 
 import UIKit
 import SnapKit
+import AuthenticationServices
 
 final class LogInViewController: UIViewController {
 
@@ -19,9 +20,8 @@ final class LogInViewController: UIViewController {
         return stackView
     }()
 
-    private lazy var appleLogInButton: UIButton = {
-        let image = UIImage(systemName: "applelogo")
-        let button = UIButton.filledButton(Constant.LogInView.appleLogIn, image)
+    private lazy var appleLogInButton: ASAuthorizationAppleIDButton = {
+        let button = ASAuthorizationAppleIDButton(type: .signIn, style: .black)
         let action = UIAction {[weak self] _ in
             // MARK: - TODO: Apple OAuth 인증
 
@@ -29,7 +29,6 @@ final class LogInViewController: UIViewController {
             self?.findButton.isHidden = false
         }
         button.addAction(action, for: .touchUpInside)
-        button.alpha = 0
         return button
     }()
 
