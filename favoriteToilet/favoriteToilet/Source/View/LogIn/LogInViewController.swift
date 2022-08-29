@@ -6,10 +6,15 @@
 //
 
 import UIKit
+import RxSwift
+import RxAppState
 import SnapKit
 import AuthenticationServices
 
 final class LogInViewController: UIViewController {
+    private var viewModel: LogInViewModel?
+
+    private let disposeBag = DisposeBag()
 
     private lazy var sloganLabels: UIStackView = {
         let stackView = UIStackView()
@@ -20,13 +25,19 @@ final class LogInViewController: UIViewController {
         return stackView
     }()
 
+    private var signInDelegate: SignInDelegate?
+    private lazy var contextProvider = ContextProvider(window: self.view.window)
+
     private lazy var appleLogInButton: ASAuthorizationAppleIDButton = {
         let button = ASAuthorizationAppleIDButton(type: .signIn, style: .black)
-        let action = UIAction {[weak self] _ in
-            // MARK: - TODO: Apple OAuth 인증
-
-            self?.appleLogInButton.isHidden = true
-            self?.findButton.isHidden = false
+        var action: UIAction = UIAction { _ in
+            let provider = ASAuthorizationAppleIDProvider()
+            let request = provider.createRequest()
+            request.requestedScopes = [.email, .fullName]
+            let controller = ASAuthorizationController(authorizationRequests: [request])
+            controller.delegate = self.signInDelegate
+            controller.presentationContextProvider = self.contextProvider
+            controller.performRequests()
         }
         button.addAction(action, for: .touchUpInside)
         return button
@@ -90,7 +101,28 @@ private extension LogInViewController {
     }
 }
 
-// MARK: - Configure
+// MARK: Configure
+
+extension LogInViewController {
+    func configure(with viewModel: LogInViewModel) {
+        self.viewModel = viewModel
+        self.signInDelegate = viewModel.signInDelegate
+
+        viewModel.buttonViewModel.appleLogInButtonIsHidden
+            .bind(to: appleLogInButton.rx.isHidden)
+            .disposed(by: disposeBag)
+
+        viewModel.buttonViewModel.findButtonIsHidden
+            .bind(to: findButton.rx.isHidden)
+            .disposed(by: disposeBag)
+
+        rx.viewDidLoad
+            .bind(to: viewModel.viewDidLoad)
+            .disposed(by: disposeBag)
+    }
+}
+
+// MARK: - Private Function
 
 private extension LogInViewController {
     func fadeInOut() {
