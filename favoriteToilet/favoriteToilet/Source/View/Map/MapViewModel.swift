@@ -12,10 +12,6 @@ import RxCocoa
 import CoreLocation
 
 final class MapViewModel {
-    private var toiltes: [UUID: Toilet] = [:]
-    subscript(id: UUID) -> Toilet? {
-        return toiltes[id]
-    }
 
     @NetworkInjector(keypath: \.locationRepository)
     private var locationManager: LocationRepository
@@ -26,7 +22,10 @@ final class MapViewModel {
     private let disposeBag = DisposeBag()
     let viewDidLoad = PublishRelay<Void>()
     let didLoadLocation = PublishRelay<CLLocationCoordinate2D>()
-    let didLoadToilets = PublishRelay<[Toilet]>()
+    let didLoadToilets = PublishRelay<[UUID: Toilet]>()
+
+    let annotationTouched = PublishRelay<UUID>()
+    let prepareForPush = PublishRelay<DetailViewModel>()
 
     init() {
         subscribe()
@@ -37,24 +36,20 @@ final class MapViewModel {
 
 private extension MapViewModel {
     func subscribe() {
-        let requestData = viewDidLoad
+        viewDidLoad
             .withUnretained(self)
             .flatMapLatest { model, _ -> Observable<ToiletMapEntity> in
-                model.networkManager.requestToilets()
-            }
-            .share()
+                model.networkManager.requestToilets()}
+            .map { $0.reduce(into: [:]) { dict, data in
+                dict[data.id] = data.toDomain()}}
+            .bind(to: didLoadToilets)
+            .disposed(by: disposeBag)
 
-        requestData
-            .subscribe(onNext: {[weak self] entity in
-                let domains = entity.compactMap { $0.toDomain() }
-
-                domains.forEach {[weak self] toilet in
-                    self?.toiltes[toilet.id] = toilet
-                }
-                self?.didLoadToilets.accept(domains)
-            }, onError: { error in
-                // MARK: - TODO : Error Handling
-            })
+        annotationTouched
+            .withLatestFrom(didLoadToilets) { ($0, $1) }
+            .compactMap { $1[$0] }
+            .map { DetailViewModel(toilet: $0) }
+            .bind(to: prepareForPush)
             .disposed(by: disposeBag)
 
         locationManager.didLoadLocation

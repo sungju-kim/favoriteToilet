@@ -43,10 +43,8 @@ private extension MapViewController {
             .forEach { self.mapView.addAnnotation($0) }
     }
 
-    func pushDetailView(_ id: UUID) {
+    func pushDetailView(_ viewModel: DetailViewModel) {
         let detailViewController = DetailViewController()
-        guard let toilet = viewModel?[id] else { return }
-        let viewModel = DetailViewModel(toilet: toilet)
         detailViewController.configure(with: viewModel)
 
         navigationController?.pushViewController(detailViewController, animated: true)
@@ -86,7 +84,12 @@ extension MapViewController {
             .disposed(by: disposeBag)
 
         viewModel.didLoadToilets
+            .map { $0.values.map { $0 }}
             .bind(to: mapViewDelegate.didLoadToilets)
+            .disposed(by: disposeBag)
+
+        viewModel.prepareForPush
+            .bind(onNext: pushDetailView)
             .disposed(by: disposeBag)
 
         Observable.combineLatest(
@@ -96,7 +99,7 @@ extension MapViewController {
         .disposed(by: disposeBag)
 
         mapViewDelegate.didPinTouched
-            .bind(onNext: pushDetailView)
+            .bind(to: viewModel.annotationTouched)
             .disposed(by: disposeBag)
 
         rx.viewDidLoad
