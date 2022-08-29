@@ -43,18 +43,7 @@ final class LogInViewController: UIViewController {
         return button
     }()
 
-    private lazy var findButton: UIButton = {
-        let button = UIButton.plainButton(Constant.LogInView.findToilet)
-        let action = UIAction {[weak self] _ in
-            let tabBarController = MainTabBarController()
-            tabBarController.modalPresentationStyle = .fullScreen
-            tabBarController.modalTransitionStyle = .crossDissolve
-            self?.present(tabBarController, animated: true, completion: nil)
-        }
-        button.addAction(action, for: .touchUpInside)
-        button.isHidden = true
-        return button
-    }()
+    private lazy var findButton: UIButton = UIButton.plainButton(Constant.LogInView.findToilet)
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -116,6 +105,10 @@ extension LogInViewController {
             .bind(to: findButton.rx.isHidden)
             .disposed(by: disposeBag)
 
+        findButton.rx.tap
+            .bind(onNext: pushToMain)
+            .disposed(by: disposeBag)
+
         rx.viewDidLoad
             .bind(to: viewModel.viewDidLoad)
             .disposed(by: disposeBag)
@@ -125,6 +118,13 @@ extension LogInViewController {
 // MARK: - Private Function
 
 private extension LogInViewController {
+    func pushToMain() {
+        let tabBarController = MainTabBarController()
+        tabBarController.modalPresentationStyle = .fullScreen
+        tabBarController.modalTransitionStyle = .crossDissolve
+        present(tabBarController, animated: true, completion: nil)
+    }
+
     func fadeInOut() {
         sloganLabels.subviews.enumerated().forEach { index, label in
             UIView.animate(withDuration: 1.0, delay: Double(index)/2) {
