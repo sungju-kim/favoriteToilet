@@ -57,6 +57,7 @@
 		6C9EC9DE289A4EEC00874708 /* StarRateView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6C9EC9DD289A4EEC00874708 /* StarRateView.swift */; };
 		6CACC007289125DA0003463A /* ToiletMapEntity.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6CACC006289125DA0003463A /* ToiletMapEntity.swift */; };
 		6CACC009289128DE0003463A /* RequestProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6CACC008289128DE0003463A /* RequestProtocol.swift */; };
+		6CDE504628BC736B00161633 /* RxAppState in Frameworks */ = {isa = PBXBuildFile; productRef = 6CDE504528BC736B00161633 /* RxAppState */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -117,6 +118,7 @@
 			files = (
 				6C51DF0B288FA73C0057B436 /* Alamofire in Frameworks */,
 				6C51DF11288FA7E10057B436 /* SnapKit in Frameworks */,
+				6CDE504628BC736B00161633 /* RxAppState in Frameworks */,
 				6C9EC9D228990A5200874708 /* RxCocoa in Frameworks */,
 				6C51DF08288FA72E0057B436 /* RxSwift in Frameworks */,
 				6C51DF06288FA72E0057B436 /* RxRelay in Frameworks */,
@@ -347,6 +349,7 @@
 				6C51DF0A288FA73C0057B436 /* Alamofire */,
 				6C51DF10288FA7E10057B436 /* SnapKit */,
 				6C9EC9D128990A5200874708 /* RxCocoa */,
+				6CDE504528BC736B00161633 /* RxAppState */,
 			);
 			productName = favoriteToilet;
 			productReference = 6C51DEED288FA6470057B436 /* favoriteToilet.app */;
@@ -381,6 +384,7 @@
 				6C51DF09288FA73C0057B436 /* XCRemoteSwiftPackageReference "Alamofire" */,
 				6C51DF0F288FA7E10057B436 /* XCRemoteSwiftPackageReference "SnapKit" */,
 				6C9EC9D028990A5200874708 /* XCRemoteSwiftPackageReference "RxSwift" */,
+				6CDE504428BC736B00161633 /* XCRemoteSwiftPackageReference "RxAppState" */,
 			);
 			productRefGroup = 6C51DEEE288FA6470057B436 /* Products */;
 			projectDirPath = "";
@@ -702,6 +706,14 @@
 				kind = branch;
 			};
 		};
+		6CDE504428BC736B00161633 /* XCRemoteSwiftPackageReference "RxAppState" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/pixeldock/RxAppState.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 1.0.0;
+			};
+		};
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
@@ -729,6 +741,11 @@
 			isa = XCSwiftPackageProductDependency;
 			package = 6C51DF04288FA72E0057B436 /* XCRemoteSwiftPackageReference "RxSwift" */;
 			productName = RxCocoa;
+		};
+		6CDE504528BC736B00161633 /* RxAppState */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 6CDE504428BC736B00161633 /* XCRemoteSwiftPackageReference "RxAppState" */;
+			productName = RxAppState;
 		};
 /* End XCSwiftPackageProductDependency section */
 	};
