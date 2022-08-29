@@ -102,6 +102,7 @@
 		6C5A57D3289D17AC00650FBA /* CommentEntity.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommentEntity.swift; sourceTree = "<group>"; };
 		6C5A57D528A1029700650FBA /* CommentCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommentCell.swift; sourceTree = "<group>"; };
 		6C5A57D728A1055300650FBA /* CommentsDataSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommentsDataSource.swift; sourceTree = "<group>"; };
+		6C78CDC728AE17CA00D69930 /* favoriteToiletDebug.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = favoriteToiletDebug.entitlements; sourceTree = "<group>"; };
 		6C78CDC828AE19C700D69930 /* SignInDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignInDelegate.swift; sourceTree = "<group>"; };
 		6C78CDCA28AE1A9C00D69930 /* ContextProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContextProvider.swift; sourceTree = "<group>"; };
 		6C8B511C28AE002800A0E38A /* favoriteToiletRelease.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = favoriteToiletRelease.entitlements; sourceTree = "<group>"; };
@@ -208,6 +209,7 @@
 		6C51DEEF288FA6470057B436 /* favoriteToilet */ = {
 			isa = PBXGroup;
 			children = (
+				6C78CDC728AE17CA00D69930 /* favoriteToiletDebug.entitlements */,
 				6C8B511C28AE002800A0E38A /* favoriteToiletRelease.entitlements */,
 				6C51DF12288FBADC0057B436 /* Resource */,
 				6C51DF1E288FBBEB0057B436 /* Source */,
@@ -608,6 +610,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_ENTITLEMENTS = favoriteToilet/favoriteToiletDebug.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = 8ZQU3Y88G8;
