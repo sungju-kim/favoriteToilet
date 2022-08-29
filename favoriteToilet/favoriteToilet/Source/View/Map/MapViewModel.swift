@@ -21,7 +21,8 @@ final class MapViewModel {
 
     private let disposeBag = DisposeBag()
     let viewDidLoad = PublishRelay<Void>()
-    let didLoadLocation = PublishRelay<CLLocationCoordinate2D>()
+    let updateLocation = PublishRelay<CLLocationCoordinate2D>()
+    let didLoadMapData = PublishRelay<(CLLocationCoordinate2D, [Marker])>()
     let didLoadToilets = PublishRelay<[UUID: Toilet]>()
 
     let annotationTouched = PublishRelay<UUID>()
@@ -45,6 +46,11 @@ private extension MapViewModel {
             .bind(to: didLoadToilets)
             .disposed(by: disposeBag)
 
+        updateLocation
+            .withLatestFrom(didLoadToilets) { ($0, $1.values.map { Marker(toilet: $0) }) }
+        .bind(to: didLoadMapData)
+        .disposed(by: disposeBag)
+
         annotationTouched
             .withLatestFrom(didLoadToilets) { ($0, $1) }
             .compactMap { $1[$0] }
@@ -52,8 +58,12 @@ private extension MapViewModel {
             .bind(to: prepareForPush)
             .disposed(by: disposeBag)
 
+        viewDidLoad
+            .bind(onNext: locationManager.updateLocation)
+            .disposed(by: disposeBag)
+
         locationManager.didLoadLocation
-            .bind(to: didLoadLocation)
+            .bind(to: updateLocation)
             .disposed(by: disposeBag)
     }
 }

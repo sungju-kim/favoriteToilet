@@ -32,8 +32,8 @@ final class MapViewController: UIViewController {
 
 // MARK: - Private Function
 private extension MapViewController {
-    func createAnnotation(_ data: ([Marker], CLLocationCoordinate2D)) {
-        let (markers, coordinate) = data
+    func createAnnotation(_ data: (CLLocationCoordinate2D, [Marker])) {
+        let (coordinate, markers) = data
         let viewRange = CLCircularRegion(center: coordinate,
                                          radius: Constant.MapView.range,
                                          identifier: "viewRange")
@@ -69,36 +69,22 @@ extension MapViewController {
     func configure(viewModel: MapViewModel) {
         self.viewModel = viewModel
 
-        let coordinate = viewModel.didLoadLocation
-            .share()
-
-        coordinate
+        viewModel.updateLocation
             .map {
-                let spanValue = MKCoordinateSpan(latitudeDelta: Constant.MapView.delta,
-                                                 longitudeDelta: Constant.MapView.delta)
-                let locationRegion = MKCoordinateRegion(center: $0,
-                                                        span: spanValue)
-                return (locationRegion, true)
-            }
+                (MKCoordinateRegion(center: $0, span: MKCoordinateSpan(latitudeDelta: 0.01,
+                                                                      longitudeDelta: 0.01)), true)}
             .bind(onNext: mapView.setRegion)
             .disposed(by: disposeBag)
 
-        viewModel.didLoadToilets
-            .map { $0.values.map { $0 }}
-            .bind(to: mapViewDelegate.didLoadToilets)
+        viewModel.didLoadMapData
+            .bind(onNext: createAnnotation)
             .disposed(by: disposeBag)
 
         viewModel.prepareForPush
             .bind(onNext: pushDetailView)
             .disposed(by: disposeBag)
 
-        Observable.combineLatest(
-            mapViewDelegate.didCreateMarker.asObservable(),
-            coordinate.asObservable())
-        .bind(onNext: createAnnotation)
-        .disposed(by: disposeBag)
-
-        mapViewDelegate.didPinTouched
+        mapViewDelegate.annotationTouched
             .bind(to: viewModel.annotationTouched)
             .disposed(by: disposeBag)
 

@@ -13,10 +13,11 @@ final class Marker: NSObject, MKAnnotation {
     let subtitle: String?
     let coordinate: CLLocationCoordinate2D
 
-    init(id: UUID, title: String?, subtitle: String?, coordinate: CLLocationCoordinate2D) {
-        self.id = id
-        self.title = title
-        self.subtitle = subtitle
-        self.coordinate = coordinate
+    init(toilet: Toilet) {
+        self.id = toilet.id
+        self.title = toilet.name
+        self.subtitle = toilet.address
+        self.coordinate = CLLocationCoordinate2D(latitude: toilet.coordinate.latitude,
+                                                 longitude: toilet.coordinate.longitude)
     }
 }
