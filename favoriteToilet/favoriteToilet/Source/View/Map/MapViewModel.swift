@@ -48,8 +48,8 @@ private extension MapViewModel {
 
         updateLocation
             .withLatestFrom(didLoadToilets) { ($0, $1.values.map { Marker(toilet: $0) }) }
-        .bind(to: didLoadMapData)
-        .disposed(by: disposeBag)
+            .bind(to: didLoadMapData)
+            .disposed(by: disposeBag)
 
         annotationTouched
             .withLatestFrom(didLoadToilets) { ($0, $1) }
