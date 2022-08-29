@@ -46,10 +46,8 @@ private extension MapViewController {
     func pushDetailView(_ id: UUID) {
         let detailViewController = DetailViewController()
         guard let toilet = viewModel?[id] else { return }
-        let viewModel = DetailViewModel()
+        let viewModel = DetailViewModel(toilet: toilet)
         detailViewController.configure(with: viewModel)
-
-        viewModel.configure(with: toilet)
 
         navigationController?.pushViewController(detailViewController, animated: true)
     }

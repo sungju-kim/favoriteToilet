@@ -17,15 +17,14 @@ final class MockDetailViewRepositoryImpl: NetworkRepository<MockEndPoint>, MockD
 
     func requestComments() -> Observable<CommentsEntity> {
         return Observable.create { observer in
-            self.networkManager.request(endPoint: .toilets)
+            self.networkManager.request(endPoint: .comments)
                 .subscribe { data in
                     guard let decodedData = Self.decode(CommentsEntity.self, decodeTarget: data) else {
                         observer.onError(NetworkError.failToDecode)
                         return
                     }
                     observer.onNext(decodedData)
-                } onFailure: { error in
-                    print(error)
+                } onFailure: { _ in
                     observer.onError(NetworkError.emptyData)
                 }.disposed(by: self.disposeBag)
 

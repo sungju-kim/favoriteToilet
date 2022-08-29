@@ -16,35 +16,19 @@ final class DetailViewModel {
     private var networkManager: MockDetailViewRepository
 
     private var disposeBag = DisposeBag()
-    let loadToilet = PublishRelay<Toilet>()
-    let loadComments = PublishRelay<[Comment]>()
+    let viewDidLoad = PublishRelay<Void>()
+    let didLoadToilet = PublishRelay<Toilet>()
+    let didLoadComments = PublishRelay<Comments>()
 
-    init() {
-        bind()
-    }
-}
-
-extension DetailViewModel {
-    func bind() {
-        let requestComment = loadToilet
-            .withUnretained(self)
-            .flatMapLatest { model, _ -> Observable<CommentsEntity> in
-                model.networkManager.requestComments()}
-            .share()
-
-        requestComment
-            .subscribe(onNext: {[weak self] entity in
-                let comments = entity.data.map { $0.toDomain() }
-                self?.loadComments.accept(comments)
-            }, onError: { error in
-                // MARK: - TODO : Error Handling
-            })
+    init(toilet: Toilet) {
+        viewDidLoad
+            .map { toilet }
+            .bind(to: didLoadToilet)
             .disposed(by: disposeBag)
-    }
-}
 
-extension DetailViewModel {
-    func configure(with toilet: Toilet) {
-        loadToilet.accept(toilet)
+        Observable.combineLatest(viewDidLoad.asObservable(), networkManager.requestComments())
+            .map { $1.toDomain() }
+            .bind(to: didLoadComments)
+            .disposed(by: disposeBag)
     }
 }

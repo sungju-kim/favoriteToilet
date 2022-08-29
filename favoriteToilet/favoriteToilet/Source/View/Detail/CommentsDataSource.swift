@@ -6,9 +6,19 @@
 //
 
 import UIKit
+import RxSwift
+import RxRelay
 
 final class CommentsDataSource: NSObject, UICollectionViewDataSource {
     private var comments: [Comment] = []
+
+    private let disposeBag = DisposeBag()
+    let updateComments = PublishRelay<Comments>()
+    let didLoadComment = PublishRelay<Void>()
+    override init() {
+        super.init()
+        bind()
+    }
 
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         comments.count
@@ -37,8 +47,15 @@ extension CommentsDataSource {
         section.interGroupSpacing = Constraint.min
         return section
     }
+}
 
-    func configure(with comments: [Comment]) {
-        self.comments = comments
+// MARK: - Bind
+
+private extension CommentsDataSource {
+    func bind() {
+        updateComments
+            .map { self.comments = $0.data }
+            .bind(to: didLoadComment)
+            .disposed(by: disposeBag)
     }
 }

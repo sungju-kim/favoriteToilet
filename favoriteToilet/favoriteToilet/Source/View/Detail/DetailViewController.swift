@@ -8,8 +8,10 @@
 import UIKit
 import SnapKit
 import RxSwift
+import RxAppState
 
 final class DetailViewController: UIViewController {
+    private var viewModel: DetailViewModel?
 
     private var disposeBag = DisposeBag()
 
@@ -82,22 +84,27 @@ final class DetailViewController: UIViewController {
             informationStackView.addArrangedSubview(label)
         }
     }
-
-    private func showComments(_ comments: [Comment]) {
-        commentsDataSource.configure(with: comments)
-    }
 }
 
 // MARK: - Configure
 
 extension DetailViewController {
     func configure(with viewModel: DetailViewModel) {
-        viewModel.loadToilet
+        self.viewModel = viewModel
+        viewModel.didLoadToilet
             .bind(onNext: showInformation)
             .disposed(by: disposeBag)
 
-        viewModel.loadComments
-            .bind(onNext: showComments)
+        viewModel.didLoadComments
+            .bind(to: commentsDataSource.updateComments)
+            .disposed(by: disposeBag)
+
+        commentsDataSource.didLoadComment
+            .bind(onNext: commentsCollectionView.reloadData)
+            .disposed(by: disposeBag)
+
+        rx.viewDidLoad
+            .bind(to: viewModel.viewDidLoad)
             .disposed(by: disposeBag)
     }
 }

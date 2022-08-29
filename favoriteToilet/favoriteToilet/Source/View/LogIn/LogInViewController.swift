@@ -31,13 +31,14 @@ final class LogInViewController: UIViewController {
     private lazy var appleLogInButton: ASAuthorizationAppleIDButton = {
         let button = ASAuthorizationAppleIDButton(type: .signIn, style: .black)
         var action: UIAction = UIAction { _ in
-            let provider = ASAuthorizationAppleIDProvider()
-            let request = provider.createRequest()
-            request.requestedScopes = [.email, .fullName]
-            let controller = ASAuthorizationController(authorizationRequests: [request])
-            controller.delegate = self.signInDelegate
-            controller.presentationContextProvider = self.contextProvider
-            controller.performRequests()
+            self.pushToMain()
+//            let provider = ASAuthorizationAppleIDProvider()
+//            let request = provider.createRequest()
+//            request.requestedScopes = [.email, .fullName]
+//            let controller = ASAuthorizationController(authorizationRequests: [request])
+//            controller.delegate = self.signInDelegate
+//            controller.presentationContextProvider = self.contextProvider
+//            controller.performRequests()
         }
         button.addAction(action, for: .touchUpInside)
         return button
