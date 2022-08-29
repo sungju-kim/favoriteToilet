@@ -28,14 +28,13 @@ extension DetailViewModel {
     func bind() {
         let requestComment = loadToilet
             .withUnretained(self)
-            .flatMapLatest { model, _ -> Single<[CommentEntity]> in
-                model.networkManager.request(endPoint: MockEndPoint())
-            }
+            .flatMapLatest { model, _ -> Observable<CommentsEntity> in
+                model.networkManager.requestComments()}
             .share()
 
         requestComment
             .subscribe(onNext: {[weak self] entity in
-                let comments = entity.map { $0.toDomain() }
+                let comments = entity.data.map { $0.toDomain() }
                 self?.loadComments.accept(comments)
             }, onError: { error in
                 // MARK: - TODO : Error Handling

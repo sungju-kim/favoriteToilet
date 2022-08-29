@@ -39,8 +39,8 @@ private extension MapViewModel {
     func subscribe() {
         let requestData = viewDidLoad
             .withUnretained(self)
-            .flatMapLatest { model, _ -> Single<ToiletMapEntity> in
-                model.networkManager.request(endPoint: MockEndPoint())
+            .flatMapLatest { model, _ -> Observable<ToiletMapEntity> in
+                model.networkManager.requestToilets()
             }
             .share()
 

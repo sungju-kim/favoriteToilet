@@ -9,37 +9,29 @@ import Foundation
 import RxSwift
 import Alamofire
 
-class NetworkManager: RequestProtocol {
-    private init() {}
+class NetworkManager<Target: Requestable> {
 
-    func request<T: Decodable>(endPoint: Requestable) -> Single<T> {
+    func request(endPoint: Target) -> Single<Data> {
         return Single.create { observer in
             guard let url = endPoint.url else {
                 observer(.failure(NetworkError.invalidURL))
-                return Disposables.create {}
+                return Disposables.create()
             }
-
-            let headers: HTTPHeaders = endPoint.headers
 
             let request: DataRequest = AF.request(url,
                                                   method: endPoint.method,
-                                                  parameters: endPoint.parameter,
-                                                  headers: headers)
-
+                                                  parameters: endPoint.parameter)
             request
                 .validate(statusCode: 200..<300)
                 .response { response in
-                    guard let data = response.data else {
+                    if let data = response.data {
+                        observer(.success(data))
+                    } else {
                         observer(.failure(NetworkError.emptyData))
-                        return
                     }
-                    guard let decodedData = try? JSONDecoder().decode(T.self, from: data) else {
-                        observer(.failure(NetworkError.failToDecode))
-                        return
-                    }
-                    observer(.success(decodedData))
                 }
-            return Disposables.create {}
+            return Disposables.create()
         }
     }
+
 }

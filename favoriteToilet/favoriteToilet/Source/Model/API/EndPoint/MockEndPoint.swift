@@ -17,6 +17,7 @@ extension MockEndPoint: Requestable {
     var baseURL: URL? {
         return URL(string: "http://localhost:3000/")
     }
+
     var path: String {
         switch self {
         case .toilets:
@@ -25,9 +26,11 @@ extension MockEndPoint: Requestable {
             return "comments"
         }
     }
+
     var url: URL? {
         return baseURL?.appendingPathComponent(path)
     }
+
     var headers: HTTPHeaders {
         return [HTTPHeader.accept("application/json")]
     }

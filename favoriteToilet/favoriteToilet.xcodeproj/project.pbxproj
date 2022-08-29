@@ -40,6 +40,7 @@
 		6C51DF26288FC1990057B436 /* Constraint.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6C51DF25288FC1990057B436 /* Constraint.swift */; };
 		6C51DF29288FC7280057B436 /* UIButton + extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6C51DF28288FC7280057B436 /* UIButton + extension.swift */; };
 		6C51DF2B288FCC0C0057B436 /* Constant.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6C51DF2A288FCC0C0057B436 /* Constant.swift */; };
+		6C592C5228BC9D2000956E57 /* NetworkRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6C592C5128BC9D2000956E57 /* NetworkRepository.swift */; };
 		6C5A57C9289D107000650FBA /* Information.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6C5A57C8289D107000650FBA /* Information.swift */; };
 		6C5A57CB289D13F300650FBA /* Comment.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6C5A57CA289D13F300650FBA /* Comment.swift */; };
 		6C5A57CE289D14B400650FBA /* MockDetailViewRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6C5A57CD289D14B400650FBA /* MockDetailViewRepository.swift */; };
@@ -94,6 +95,7 @@
 		6C51DF25288FC1990057B436 /* Constraint.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constraint.swift; sourceTree = "<group>"; };
 		6C51DF28288FC7280057B436 /* UIButton + extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIButton + extension.swift"; sourceTree = "<group>"; };
 		6C51DF2A288FCC0C0057B436 /* Constant.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constant.swift; sourceTree = "<group>"; };
+		6C592C5128BC9D2000956E57 /* NetworkRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkRepository.swift; sourceTree = "<group>"; };
 		6C5A57C8289D107000650FBA /* Information.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Information.swift; sourceTree = "<group>"; };
 		6C5A57CA289D13F300650FBA /* Comment.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Comment.swift; sourceTree = "<group>"; };
 		6C5A57CD289D14B400650FBA /* MockDetailViewRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MockDetailViewRepository.swift; sourceTree = "<group>"; };
@@ -182,6 +184,7 @@
 			children = (
 				6C9EC9C82893789600874708 /* EndPoint */,
 				6C4DA7442891183B00FB3BA0 /* NetworkManager.swift */,
+				6C592C5128BC9D2000956E57 /* NetworkRepository.swift */,
 				6C4DA74728911BB500FB3BA0 /* Requestable.swift */,
 				6C4DA74928911BC300FB3BA0 /* NetworkError.swift */,
 				6CACC008289128DE0003463A /* RequestProtocol.swift */,
@@ -436,6 +439,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				6C592C5228BC9D2000956E57 /* NetworkRepository.swift in Sources */,
 				6C5A57D828A1055300650FBA /* CommentsDataSource.swift in Sources */,
 				6C9EC9CC28937B7D00874708 /* MapViewDelegate.swift in Sources */,
 				6C78CDC928AE19C700D69930 /* SignInDelegate.swift in Sources */,

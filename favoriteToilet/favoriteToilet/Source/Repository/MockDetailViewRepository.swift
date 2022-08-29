@@ -8,24 +8,28 @@
 import Foundation
 import RxSwift
 
-final class MockDetailViewRepository: RequestProtocol {
-    func request<T: Decodable>(endPoint: Requestable) -> Single<T> {
-        return Single.create { observer in
-            let filename = "comments.json"
-            guard let file = Bundle.main.url(forResource: filename, withExtension: nil) else {
-                observer(.failure(NetworkError.emptyData))
-                return Disposables.create {}
-            }
-            guard let data = try? Data(contentsOf: file) else {
-                observer(.failure(NetworkError.emptyData))
-                return Disposables.create {}
-            }
-            guard let decodedData = try? JSONDecoder().decode(T.self, from: data) else {
-                observer(.failure(NetworkError.failToDecode))
-                return Disposables.create {}
-            }
-            observer(.success(decodedData))
-            return Disposables.create()
+protocol MockDetailViewRepository {
+    func requestComments() -> Observable<CommentsEntity>
+}
+
+final class MockDetailViewRepositoryImpl: NetworkRepository<MockEndPoint>, MockDetailViewRepository {
+    private let disposeBag = DisposeBag()
+
+    func requestComments() -> Observable<CommentsEntity> {
+        return Observable.create { observer in
+            self.networkManager.request(endPoint: .toilets)
+                .subscribe { data in
+                    guard let decodedData = Self.decode(CommentsEntity.self, decodeTarget: data) else {
+                        observer.onError(NetworkError.failToDecode)
+                        return
+                    }
+                    observer.onNext(decodedData)
+                } onFailure: { error in
+                    print(error)
+                    observer.onError(NetworkError.emptyData)
+                }.disposed(by: self.disposeBag)
+
+            return Disposables.create {}
         }
     }
 }

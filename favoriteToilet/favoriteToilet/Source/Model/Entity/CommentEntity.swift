@@ -7,6 +7,11 @@
 
 import Foundation
 
+struct CommentsEntity: Codable {
+    let id: String
+    let data: [CommentEntity]
+}
+
 struct CommentEntity: Codable {
     let id: UUID
     let writer: String
