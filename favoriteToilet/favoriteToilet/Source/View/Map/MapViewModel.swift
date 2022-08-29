@@ -24,7 +24,7 @@ final class MapViewModel {
     private var networkManager: MockMapViewRepository
 
     private let disposeBag = DisposeBag()
-    let loadData = PublishRelay<Void>()
+    let viewDidLoad = PublishRelay<Void>()
     let didLoadLocation = PublishRelay<CLLocationCoordinate2D>()
     let didLoadToilets = PublishRelay<[Toilet]>()
 
@@ -37,7 +37,7 @@ final class MapViewModel {
 
 private extension MapViewModel {
     func subscribe() {
-        let requestData = loadData
+        let requestData = viewDidLoad
             .withUnretained(self)
             .flatMapLatest { model, _ -> Single<ToiletMapEntity> in
                 model.networkManager.request(endPoint: MockEndPoint())

@@ -8,6 +8,7 @@
 import UIKit
 import MapKit
 import RxSwift
+import RxAppState
 import RxCocoa
 
 final class MapViewController: UIViewController {
@@ -100,6 +101,8 @@ extension MapViewController {
             .bind(onNext: pushDetailView)
             .disposed(by: disposeBag)
 
-        viewModel.loadData.accept(())
+        rx.viewDidLoad
+            .bind(to: viewModel.viewDidLoad)
+            .disposed(by: disposeBag)
     }
 }
