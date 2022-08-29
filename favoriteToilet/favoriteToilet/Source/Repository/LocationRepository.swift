@@ -11,8 +11,6 @@ import RxRelay
 final class LocationRepository: NSObject, CLLocationManagerDelegate {
     let didLoadLocation = PublishRelay<CLLocationCoordinate2D>()
 
-    private var locations: [CLLocation] = []
-
     private let locationManager = CLLocationManager()
 
     override init() {
@@ -20,20 +18,18 @@ final class LocationRepository: NSObject, CLLocationManagerDelegate {
         locationManager.delegate = self
         locationManager.desiredAccuracy = kCLLocationAccuracyBest
         locationManager.requestWhenInUseAuthorization()
-        locationManager.startUpdatingLocation()
     }
 
-    func getUserLoaction() {
-        guard let location = self.locations.last else { return }
-        didLoadLocation.accept(location.coordinate)
+    func updateLocation() {
+        locationManager.requestLocation()
+    }
+
+    func locationManager(_ manager: CLLocationManager, didFailWithError error: Error) {
     }
 
     func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
         guard let location = locations.last else { return }
-        if self.locations.count >= 10 {
-            self.locations.removeAll()
-        }
-        self.locations.append(location)
+        didLoadLocation.accept(location.coordinate)
     }
 
     func locationManagerDidChangeAuthorization(_ manager: CLLocationManager) {
