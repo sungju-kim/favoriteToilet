@@ -12,6 +12,13 @@ struct CommentsEntity: Codable {
     let data: [CommentEntity]
 }
 
+extension CommentsEntity {
+    func toDomain() -> Comments {
+        let data = data.map { $0.toDomain() }
+        return Comments(id: id, data: data)
+    }
+}
+
 struct CommentEntity: Codable {
     let id: UUID
     let writer: String
