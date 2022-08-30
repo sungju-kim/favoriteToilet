@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		6C11EAF928BE3960009C66E6 /* ToiletMarkerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6C11EAF828BE3960009C66E6 /* ToiletMarkerView.swift */; };
 		6C266BA828A141E600D017EE /* StarRateLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6C266BA728A141E600D017EE /* StarRateLabel.swift */; };
 		6C361D0B288FD30800833E93 /* MapViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6C361D0A288FD30800833E93 /* MapViewController.swift */; };
 		6C361D11288FD3FA00833E93 /* LocationRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6C361D10288FD3FA00833E93 /* LocationRepository.swift */; };
@@ -65,6 +66,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		6C11EAF828BE3960009C66E6 /* ToiletMarkerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ToiletMarkerView.swift; sourceTree = "<group>"; };
 		6C266BA728A141E600D017EE /* StarRateLabel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StarRateLabel.swift; sourceTree = "<group>"; };
 		6C361D0A288FD30800833E93 /* MapViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapViewController.swift; sourceTree = "<group>"; };
 		6C361D10288FD3FA00833E93 /* LocationRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationRepository.swift; sourceTree = "<group>"; };
@@ -143,6 +145,7 @@
 				6C361D0A288FD30800833E93 /* MapViewController.swift */,
 				6C361D242891000400833E93 /* MapViewModel.swift */,
 				6C9EC9CB28937B7D00874708 /* MapViewDelegate.swift */,
+				6C11EAF828BE3960009C66E6 /* ToiletMarkerView.swift */,
 			);
 			path = Map;
 			sourceTree = "<group>";
@@ -465,6 +468,7 @@
 				6C3AB473289C3886008E36F3 /* DetailViewModel.swift in Sources */,
 				6C5A57D628A1029700650FBA /* CommentCell.swift in Sources */,
 				6C361D0B288FD30800833E93 /* MapViewController.swift in Sources */,
+				6C11EAF928BE3960009C66E6 /* ToiletMarkerView.swift in Sources */,
 				6C4DA74828911BB500FB3BA0 /* Requestable.swift in Sources */,
 				6CACC009289128DE0003463A /* RequestProtocol.swift in Sources */,
 				6C9EC9CA289378A300874708 /* MockEndPoint.swift in Sources */,

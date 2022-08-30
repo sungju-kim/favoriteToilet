@@ -20,6 +20,7 @@ final class MapViewController: UIViewController {
         let mapView = MKMapView()
         mapView.delegate = mapViewDelegate
         mapView.showsUserLocation = true
+        mapView.register(ToiletMarkerView.self, forAnnotationViewWithReuseIdentifier: ToiletMarkerView.identifier)
         return mapView
     }()
 
